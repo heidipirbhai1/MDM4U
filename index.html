@@ -7,16 +7,202 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
-body {font-family: "Roboto", sans-serif}
+
+/* =========================================================
+   PINK / COQUETTE THEME
+   ========================================================= */
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #fff5fa;
+  color: #4a3741;
+}
+
+/* ===== GENERAL W3 ELEMENTS ===== */
+
 .w3-bar-block .w3-bar-item {
   padding: 16px;
   font-weight: bold;
 }
+
+/* ===== PINK THEME ===== */
+
+.w3-theme,
+.w3-theme-d1,
+.w3-theme-d2,
+.w3-theme-d3,
+.w3-theme-d4,
+.w3-theme-d5 {
+  background-color: #d9789e !important;
+  color: white !important;
+}
+
+.w3-theme-l1 {
+  background-color: #f3c8da !important;
+  color: #4a3741 !important;
+}
+
+.w3-theme-l2 {
+  background-color: #f7d9e6 !important;
+  color: #4a3741 !important;
+}
+
+.w3-theme-l3 {
+  background-color: #fceaf2 !important;
+  color: #4a3741 !important;
+}
+
+.w3-theme-l4 {
+  background-color: #fff5fa !important;
+  color: #4a3741 !important;
+}
+
+.w3-theme-l5 {
+  background-color: #fffafd !important;
+  color: #4a3741 !important;
+}
+
+/* ===== TOP BAR ===== */
+
+#myTop {
+  background: linear-gradient(135deg, #d9789e, #c45b87) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(214, 123, 157, 0.20);
+}
+
+#myTop .w3-button {
+  background-color: #c45b87 !important;
+  color: white !important;
+  border-radius: 8px;
+}
+
+#myTop .w3-button:hover {
+  background-color: #b84f7d !important;
+}
+
+/* ===== MAIN HEADER ===== */
+
+header.w3-theme {
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf3) !important;
+  color: #b84f7d !important;
+  border-bottom: 2px solid #f3b6d0;
+  box-shadow: 0 5px 18px rgba(214, 123, 157, 0.10);
+}
+
+header h1 {
+  color: #b84f7d !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+}
+
+/* ===== MAIN CONTENT ===== */
+
+.w3-main {
+  background-color: #fff5fa;
+}
+
+.w3-container {
+  color: #4a3741;
+}
+
+/* ===== CONTENT AREA ===== */
+
+.w3-main > .w3-container {
+  background-color: #fff5fa;
+}
+
+.w3-main > .w3-container > p {
+  background-color: #ffffff;
+  border-left: 5px solid #e99aba;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin: 18px 0;
+  box-shadow: 0 4px 15px rgba(214, 123, 157, 0.08);
+}
+
+/* ===== HEADINGS ===== */
+
+.w3-main h2 {
+  color: #b84f7d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  background: linear-gradient(135deg, #fff0f6, #ffe4ef);
+  border-left: 5px solid #d9789e;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 30px;
+  box-shadow: 0 3px 12px rgba(214, 123, 157, 0.08);
+}
+
+/* ===== PINK BUTTONS ===== */
+
+.w3-button.w3-pink {
+  background: linear-gradient(135deg, #f4a9c7, #d9789e) !important;
+  color: white !important;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 4px 12px rgba(214, 123, 157, 0.18);
+  transition: 0.2s ease;
+}
+
+.w3-button.w3-pink:hover {
+  background: #b84f7d !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(214, 123, 157, 0.25);
+}
+
+/* ===== LINKS ===== */
+
+a {
+  color: #b84f7d;
+}
+
+/* ===== FOOTER ===== */
+
+footer.w3-theme {
+  background: linear-gradient(135deg, #ffd6e8, #f3c8da) !important;
+  color: #8d5b70 !important;
+  border-top: 2px solid #f1bdd2;
+}
+
+footer p {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+
+  header.w3-container {
+    padding: 45px 20px !important;
+  }
+
+  header h1 {
+    font-size: 2em !important;
+  }
+
+  .w3-main > .w3-container {
+    padding: 20px !important;
+  }
+
+  .w3-main h2 {
+    font-size: 1.4em;
+  }
+
+}
+
 </style>
+
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
+
 <body>
+
 <!--Navigation bar-->
 <div id="nav-placeholder">
 
@@ -49,9 +235,11 @@ $(function(){
   <h2>Évaluation</h2>
   <p>Je serai évalué à partir d'une grille d'évaluation pour tout le travail que je fais sur ce site.</p>
   <a href="https://drive.google.com/file/d/1yvUXAs8ye-ZCvlvNpsVtPxSbJnZd1HGT/view?usp=sharing" target="_blank" class="w3-button w3-pink">Voir la grille</a>
+
   <h2>Calendrier du cours</h2>
   <p>Si jamais je ne me retrouve pas, je peux toujours accéder au calendrier du cours.</p>
   <a href="https://www.mmebernatchez.ca/mdm4u.html" target="_blank" class="w3-button w3-pink">Voir le calendrier</a>
+
   <h2>Intégrité intellectuelle</h2>
   <p>Je ferai preuve d'intégrité intellectuelle quand je partage de l'information que j'ai recherchée.  Je consignerai les sources fiables de mes recherches dans des bibliographies pour chaque page web.  Pour se faire j'utiliserai le logiciel MyBib.</p>
   <a href="https://www.mybib.com/" target="_blank" class="w3-button w3-pink">Voir le site MyBib</a>
@@ -103,4 +291,4 @@ function myAccordion(id) {
 </script>
      
 </body>
-</html> 
+</html>
