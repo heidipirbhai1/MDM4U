@@ -55,12 +55,12 @@ $(function(){
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Georgia, "Times New Roman", serif;
             line-height: 1.6;
             margin: 0;
             padding: 40px;
-            background-color: #f5f7fa;
-            color: #222;
+            background-color: #fff5fa;
+            color: #4a3741;
         }
 
         .container {
@@ -68,30 +68,37 @@ $(function(){
             margin: auto;
             background-color: white;
             padding: 40px;
-            border-radius: 12px;
+            border-radius: 22px;
+            border: 1px solid #f2c6d9;
+            box-shadow: 0 8px 25px rgba(214, 123, 157, 0.12);
         }
 
         h1 {
             text-align: center;
             margin-bottom: 10px;
+            color: #b84f7d;
+            font-size: 2.5em;
         }
 
         h2 {
             margin-top: 35px;
-            border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid #f3c8da;
             padding-bottom: 10px;
+            color: #b84f7d;
         }
 
         h3 {
             margin-top: 30px;
+            color: #c45b87;
         }
 
         .section {
             margin-top: 25px;
             padding: 25px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background-color: #fafafa;
+            border: 1px solid #f2c6d9;
+            border-radius: 18px;
+            background-color: #fff8fb;
+            box-shadow: 0 5px 18px rgba(214, 123, 157, 0.08);
         }
 
         .definition {
@@ -113,7 +120,29 @@ $(function(){
 
         iframe {
             max-width: 100%;
-            border-radius: 10px;
+            border-radius: 15px;
+            border: 3px solid #f3c8da;
+            box-shadow: 0 6px 18px rgba(214, 123, 157, 0.12);
+        }
+
+        /* Petit effet rose pour les sections */
+        .section:hover {
+            border-color: #e99aba;
+            transition: 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
@@ -275,6 +304,7 @@ $(function(){
 </div>
 
 </body>
+</html>
 </html><!-- Tu peux complètement modifier le contenu par dessus cette ligne -->
 
 </div>
