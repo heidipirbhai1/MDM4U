@@ -46,72 +46,236 @@ $(function(){
 
 <!-- Tu peux complètement modifier le contenu ci-dessous -->
 
-<h1>Les biais</h1>
-<h2>Vidéo de la leçon sur les biais</h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les biais</title>
 
-<!-- Insérer le code d'intégratio (embed code) de la vidéo YouTube ci-dessous -->
-  
-  <li>1. Le biais d’échantillonnage
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            background-color: #f5f7fa;
+            color: #222;
+        }
 
-Définition : L’échantillon ne représente pas correctement la population étudiée.
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+        }
 
-Taille de l’échantillon : Trop peu de participants pour obtenir des résultats fiables.
-Ex. : 5 élèves sur 500 sont interrogés.
-Caractéristiques de l’échantillon : Certains groupes sont absents ou mal représentés.
-Ex. : Interroger seulement les élèves de 12e pour représenter toute l’école.
-Surreprésentation : Un groupe est trop nombreux dans l’échantillon.
-Ex. : 90 filles et 10 garçons dans une école 50/50.</li>
-   <ul>
-      <li>Il y a surreprésentation d’une catégorie de participants ou de participantes parce que la méthode de sondage ne tient pas compte des différentes tailles des groupes. </li>
-</ul>
-</ul>
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-<ul>
-  <li>Le biais de réponse
+        h2 {
+            margin-top: 35px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
 
-Définition : Lorsque les conditions d’un sondage influencent les réponses.
+        h3 {
+            margin-top: 30px;
+        }
 
-Questions influentes : La formulation pousse vers une réponse.
-Ex. : utiliser des mots positifs comme « excellente ».
-Mauvaise formulation : Question ambiguë, difficile ou orientée.
-Questions fermées : Les choix proposés peuvent influencer la réponse.
-Autres influences :
-Intervieweur : son ton ou son attitude.
-Lieu/moment : le contexte du sondage.
-Confidentialité : la peur d’être identifié peut modifier les réponses.</li>
-     <ul>
-      <li>Les questions de sondage influencent les réponses des répondants.</li>
+        .section {
+            margin-top: 25px;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fafafa;
+        }
+
+        .definition {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .video {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        iframe {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Les biais</h1>
+
+    <h2>Vidéo de la leçon sur les biais</h2>
+
+    <!-- Insérer le code d'intégratio (embed code) de la vidéo YouTube ci-dessous -->
+
+
+    <!-- Biais d'échantillonnage -->
+    <div class="section">
+
+        <h3>1. Le biais d’échantillonnage</h3>
+
+        <p class="definition">
+            Définition : L’échantillon ne représente pas correctement la population étudiée.
+        </p>
+
         <ul>
-      		<li>Mettre des caractères en gras pour influencer une réponse.  
-</li>
-            <li>Mauvaise formulation des questions. 
-</li>
-            <li>Questions fermées qui influencent les gens. </li>
-    	</ul>
-   </ul>
-  
-  
-  
-   <ul>
-      <li>Autres  influences sur les réponses des répondants.</li>
+            <li>
+                Taille de l’échantillon : Trop peu de participants pour obtenir des résultats fiables.
+                <br>
+                Ex. : 5 élèves sur 500 sont interrogés.
+            </li>
+
+            <li>
+                Caractéristiques de l’échantillon : Certains groupes sont absents ou mal représentés.
+                <br>
+                Ex. : Interroger seulement les élèves de 12e pour représenter toute l’école.
+            </li>
+
+            <li>
+                Surreprésentation : Un groupe est trop nombreux dans l’échantillon.
+                <br>
+                Ex. : 90 filles et 10 garçons dans une école 50/50.
+            </li>
+        </ul>
+
         <ul>
-      		<li>Le ton ou l’attitude de la personne qui fait l’entrevue.</li>
-            <li>Le lieu et le moment de l’enquête.</li>
-            <li>La confidentialité des résultats (est-ce que le répondant sera poussé à mentir ?)</li>
-    	</ul>
-   </ul>
-</ul>
-<ul>
-  <li>Définition : Le biais de non-répondants se produit lorsque certaines personnes choisies pour un sondage ne répondent pas, ce qui peut rendre les résultats moins représentatifs de la population.
+            <li>
+                Il y a surreprésentation d’une catégorie de participants ou de participantes parce que la méthode de sondage ne tient pas compte des différentes tailles des groupes.
+            </li>
+        </ul>
 
-Explication : Les personnes qui ne répondent pas peuvent avoir des opinions différentes de celles qui répondent. Les résultats peuvent donc être influencés par leur absence.
+    </div>
 
-Exemple : Une école envoie un questionnaire à 500 élèves, mais seulement 100 répondent. Si les 400 autres élèves ont des opinions différentes, les résultats ne représentent peut-être pas l’ensemble de l’école.</li>
-   <ul>
-      <li>Se produit lorsqu’il y a un manque de renseignement dûs à de questionnaires non-retournés.</li>
-</ul>
-</ul><iframe width="560" height="315" src="https://www.youtube.com/embed/xm38DnpQPzE?si=pNbjLe363UCY4nxk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<!-- Tu peux complètement modifier le contenu par dessus cette ligne -->
+
+    <!-- Biais de réponse -->
+    <div class="section">
+
+        <h3>Le biais de réponse</h3>
+
+        <p class="definition">
+            Définition : Lorsque les conditions d’un sondage influencent les réponses.
+        </p>
+
+        <ul>
+            <li>
+                Questions influentes : La formulation pousse vers une réponse.
+                <br>
+                Ex. : utiliser des mots positifs comme « excellente ».
+            </li>
+
+            <li>
+                Mauvaise formulation : Question ambiguë, difficile ou orientée.
+            </li>
+
+            <li>
+                Questions fermées : Les choix proposés peuvent influencer la réponse.
+            </li>
+
+            <li>
+                Autres influences :
+                <ul>
+                    <li>Intervieweur : son ton ou son attitude.</li>
+                    <li>Lieu/moment : le contexte du sondage.</li>
+                    <li>Confidentialité : la peur d’être identifié peut modifier les réponses.</li>
+                </ul>
+            </li>
+        </ul>
+
+
+        <ul>
+            <li>
+                Les questions de sondage influencent les réponses des répondants.
+            </li>
+
+            <ul>
+                <li>Mettre des caractères en gras pour influencer une réponse.</li>
+                <li>Mauvaise formulation des questions.</li>
+                <li>Questions fermées qui influencent les gens.</li>
+            </ul>
+        </ul>
+
+
+        <ul>
+            <li>
+                Autres  influences sur les réponses des répondants.
+            </li>
+
+            <ul>
+                <li>Le ton ou l’attitude de la personne qui fait l’entrevue.</li>
+                <li>Le lieu et le moment de l’enquête.</li>
+                <li>La confidentialité des résultats (est-ce que le répondant sera poussé à mentir ?)</li>
+            </ul>
+        </ul>
+
+    </div>
+
+
+    <!-- Biais de non-répondants -->
+    <div class="section">
+
+        <h3>Le biais de non-répondants</h3>
+
+        <p>
+            Définition : Le biais de non-répondants se produit lorsque certaines personnes choisies pour un sondage ne répondent pas, ce qui peut rendre les résultats moins représentatifs de la population.
+        </p>
+
+        <p>
+            Explication : Les personnes qui ne répondent pas peuvent avoir des opinions différentes de celles qui répondent. Les résultats peuvent donc être influencés par leur absence.
+        </p>
+
+        <p>
+            Exemple : Une école envoie un questionnaire à 500 élèves, mais seulement 100 répondent. Si les 400 autres élèves ont des opinions différentes, les résultats ne représentent peut-être pas l’ensemble de l’école.
+        </p>
+
+        <ul>
+            <li>
+                Se produit lorsqu’il y a un manque de renseignement dûs à de questionnaires non-retournés.
+            </li>
+        </ul>
+
+    </div>
+
+
+    <!-- Vidéo -->
+    <div class="video">
+
+        <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/xm38DnpQPzE?si=pNbjLe363UCY4nxk" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</div>
+
+</body>
+</html><!-- Tu peux complètement modifier le contenu par dessus cette ligne -->
 
 </div>
 
