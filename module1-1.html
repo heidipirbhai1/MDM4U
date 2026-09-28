@@ -46,61 +46,339 @@ $(function(){
 
 <!-- Tu peux complètement modifier le contenu ci-dessous -->
 
-<h1>Les différents types de données</h1>
-<h3>Variable Quantitative (continue et discrète)</h3>
-<p>Une variable quantitative représente des données sous forme de nombres.
-Discrète : Valeurs que l’on peut compter, généralement en nombres entiers. Ex. : nombre de frères et sœurs, nombre d’élèves.
-Continue : Valeurs que l’on peut mesurer, y compris avec des décimales. Ex. : taille, poids, temps.
-</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h3>Variable Qualitative (nominale et ordinale)</h3>
-<p>Une variable qualitative classe les données en catégories.
-Nominale : Catégories sans ordre précis. Ex. : couleur préférée, langue parlée, moyen de transport.
-Ordinale : Catégories qui suivent un ordre précis. Ex. : niveau de satisfaction, niveau scolaire, degré d’accord.
-</p>
+  <title>Les différents types de données</title>
+
+  <style>
+    /* ===== STYLE GÉNÉRAL ===== */
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: #fff5fa;
+      color: #4a3741;
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* ===== EN-TÊTE ===== */
+    .header {
+      text-align: center;
+      background: linear-gradient(135deg, #ffd6e8, #ffeaf3);
+      border: 2px solid #f3b6d0;
+      border-radius: 28px;
+      padding: 35px 25px;
+      margin-bottom: 35px;
+      box-shadow: 0 8px 25px rgba(214, 123, 157, 0.15);
+    }
+
+    .header h1 {
+      margin: 0;
+      color: #b84f7d;
+      font-size: 2.5em;
+    }
+
+    .header p {
+      margin: 10px 0 0;
+      color: #8d5b70;
+      font-size: 1.05em;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      background: #ffffff;
+      border: 1px solid #f2c6d9;
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 30px;
+      box-shadow: 0 6px 20px rgba(214, 123, 157, 0.10);
+    }
+
+    .section-title {
+      color: #b84f7d;
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 22px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f7d4e2;
+    }
+
+    /* ===== BLOCS DE CONTENU ===== */
+    .content-card {
+      background: #fff8fb;
+      border-left: 5px solid #e99aba;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin: 18px 0;
+    }
+
+    .content-card h3 {
+      color: #c45b87;
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.25em;
+    }
+
+    .content-card p {
+      margin: 0;
+    }
+
+    /* ===== GRAPHIQUES ===== */
+    .chart-card {
+      background: #fff8fb;
+      border: 1px solid #f3c8da;
+      border-radius: 18px;
+      padding: 22px;
+      margin: 22px 0;
+      text-align: center;
+    }
+
+    .chart-card h3 {
+      color: #c45b87;
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .chart-container {
+      width: 100%;
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    iframe {
+      max-width: 100%;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    /* ===== RÉFÉRENCES ===== */
+    .references {
+      background: #ffeaf3;
+      border: 1px solid #f1bdd2;
+      border-radius: 22px;
+      padding: 28px;
+      margin-top: 35px;
+      box-shadow: 0 6px 20px rgba(214, 123, 157, 0.10);
+    }
+
+    .references h2 {
+      color: #b84f7d;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .reference {
+      margin: 0 0 1em 0;
+      padding-left: 2em;
+      text-indent: -2em;
+      line-height: 1.6;
+      color: #604652;
+    }
+
+    /* ===== PETITS DÉTAILS DÉCORATIFS ===== */
+    .heart {
+      color: #d9789e;
+      font-size: 1.1em;
+    }
+
+    /* ===== VERSION MOBILE ===== */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .section,
+      .references {
+        padding: 20px;
+      }
+
+      iframe {
+        width: 100% !important;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- EN-TÊTE -->
+  <div class="header">
+    <h1>Les différents types de données</h1>
+    <p>♡ Données, variables et diagrammes ♡</p>
+  </div>
 
 
-<h1>Certains types de diagrammes</h1>
-<h3>Diagramme à bandes </h3>
-<p>Représente des catégories avec des bandes séparées. Il sert à comparer des données, comme les moyens de transport préférés des élèves. </p>
-<h3>Histogramme</h3>
-<p>Représente des données numériques regroupées en intervalles, avec des bandes qui se touchent. Il sert à montrer la répartition des tailles ou des résultats d’examen.</p>
-<h3>Diagramme circulaire</h3>
-<p>Représente les données en secteurs qui montrent les proportions ou les pourcentages d’un total. Il sert à illustrer la répartition des réponses à un sondage.</p>
-<h3>Diagramme à ligne brisée</h3>
-<p>Relie des points par des lignes pour montrer l’évolution des données. Il sert à représenter les changements au fil du temps, comme la température ou les résultats mensuels. </p>
+  <!-- TYPES DE DONNÉES -->
+  <section class="section">
 
-<h1>Exemples de graphiques créés avec Google Sheets</h1>
-<h3>Diagramme à bandes</h3>
-<p><iframe width="463" height="286" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh5-Jh8hGtnPmf8ljrJ_NDq3l4bf3JBMHkgkbywGY-b_LGidJ720vtvRrj2N5ONy89S-yZeHXIQU6-/pubchart?oid=359767361&amp;format=interactive"></iframe></p>
-<h3>Histogramme</h3>
-<p><iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh5-Jh8hGtnPmf8ljrJ_NDq3l4bf3JBMHkgkbywGY-b_LGidJ720vtvRrj2N5ONy89S-yZeHXIQU6-/pubchart?oid=167032744&amp;format=interactive"></iframe> </p>
-<h3>Diagramme circulaire</h3>
-<p><<iframe width="478" height="295" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh5-Jh8hGtnPmf8ljrJ_NDq3l4bf3JBMHkgkbywGY-b_LGidJ720vtvRrj2N5ONy89S-yZeHXIQU6-/pubchart?oid=592886196&amp;format=interactive"></iframe></p>
+    <h2 class="section-title">Les différents types de données</h2>
+
+    <div class="content-card">
+      <h3>Variable Quantitative (continue et discrète)</h3>
+      <p>
+        Une variable quantitative représente des données sous forme de nombres.
+        Discrète : Valeurs que l’on peut compter, généralement en nombres entiers.
+        Ex. : nombre de frères et sœurs, nombre d’élèves.
+        Continue : Valeurs que l’on peut mesurer, y compris avec des décimales.
+        Ex. : taille, poids, temps.
+      </p>
+    </div>
+
+    <div class="content-card">
+      <h3>Variable Qualitative (nominale et ordinale)</h3>
+      <p>
+        Une variable qualitative classe les données en catégories.
+        Nominale : Catégories sans ordre précis.
+        Ex. : couleur préférée, langue parlée, moyen de transport.
+        Ordinale : Catégories qui suivent un ordre précis.
+        Ex. : niveau de satisfaction, niveau scolaire, degré d’accord.
+      </p>
+    </div>
+
+  </section>
 
 
-<p> </p>
+  <!-- TYPES DE DIAGRAMMES -->
+  <section class="section">
+
+    <h2 class="section-title">Certains types de diagrammes</h2>
+
+    <div class="content-card">
+      <h3>Diagramme à bandes</h3>
+      <p>
+        Représente des catégories avec des bandes séparées. Il sert à comparer
+        des données, comme les moyens de transport préférés des élèves.
+      </p>
+    </div>
+
+    <div class="content-card">
+      <h3>Histogramme</h3>
+      <p>
+        Représente des données numériques regroupées en intervalles, avec des
+        bandes qui se touchent. Il sert à montrer la répartition des tailles
+        ou des résultats d’examen.
+      </p>
+    </div>
+
+    <div class="content-card">
+      <h3>Diagramme circulaire</h3>
+      <p>
+        Représente les données en secteurs qui montrent les proportions ou les
+        pourcentages d’un total. Il sert à illustrer la répartition des
+        réponses à un sondage.
+      </p>
+    </div>
+
+    <div class="content-card">
+      <h3>Diagramme à ligne brisée</h3>
+      <p>
+        Relie des points par des lignes pour montrer l’évolution des données.
+        Il sert à représenter les changements au fil du temps, comme la
+        température ou les résultats mensuels.
+      </p>
+    </div>
+
+  </section>
 
 
-<section class="references">
-  <h2>Références</h2>
-  <div class="reference-list">
-    <p class="reference">
-     « Alloprof Aide Aux Devoirs | Alloprof ». Www.Alloprof.Qc.Ca, https://www.alloprof.qc.ca/fr/eleves/bv/mathematiques/les-types-de-variables-m1108. Consulté le 21 sept. 2026. Hooper, Lydia. « Plus De 10 Types De Diagrammes Et Comment Choisir Le Bon - Venngage ». Venngage Blog, 20 juin 2022, https://fr.venngage.com/blog/types-de-diagrammes/. Consulté le 21 sept. 2026.
-</section>
+  <!-- GRAPHIQUES -->
+  <section class="section">
 
-<style>
-  .references h2 {
-    font-weight: bold;
-    margin-bottom: 1em;
-  }
-  .reference {
-    margin: 0 0 1em 0;
-    padding-left: 2em;
-    text-indent: -2em; /* crée le retrait en sautoir (hanging indent) */
-    line-height: 1.5;
-  }
-</style>
+    <h2 class="section-title">Exemples de graphiques créés avec Google Sheets</h2>
+
+    <div class="chart-card">
+      <h3>Diagramme à bandes</h3>
+
+      <div class="chart-container">
+        <iframe
+          width="463"
+          height="286"
+          seamless
+          scrolling="no"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh5-Jh8hGtnPmf8ljrJ_NDq3l4bf3JBMHkgkbywGY-b_LGidJ720vtvRrj2N5ONy89S-yZeHXIQU6-/pubchart?oid=359767361&amp;format=interactive">
+        </iframe>
+      </div>
+    </div>
+
+
+    <div class="chart-card">
+      <h3>Histogramme</h3>
+
+      <div class="chart-container">
+        <iframe
+          width="600"
+          height="371"
+          seamless
+          scrolling="no"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh5-Jh8hGtnPmf8ljrJ_NDq3l4bf3JBMHkgkbywGY-b_LGidJ720vtvRrj2N5ONy89S-yZeHXIQU6-/pubchart?oid=167032744&amp;format=interactive">
+        </iframe>
+      </div>
+    </div>
+
+
+    <div class="chart-card">
+      <h3>Diagramme circulaire</h3>
+
+      <div class="chart-container">
+        <iframe
+          width="478"
+          height="295"
+          seamless
+          scrolling="no"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh5-Jh8hGtnPmf8ljrJ_NDq3l4bf3JBMHkgkbywGY-b_LGidJ720vtvRrj2N5ONy89S-yZeHXIQU6-/pubchart?oid=592886196&amp;format=interactive">
+        </iframe>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- RÉFÉRENCES -->
+  <section class="references">
+
+    <h2>Références</h2>
+
+    <div class="reference-list">
+
+      <p class="reference">
+        « Alloprof Aide Aux Devoirs | Alloprof ». Www.Alloprof.Qc.Ca,
+        https://www.alloprof.qc.ca/fr/eleves/bv/mathematiques/les-types-de-variables-m1108.
+        Consulté le 21 sept. 2026.
+      </p>
+
+      <p class="reference">
+        Hooper, Lydia. « Plus De 10 Types De Diagrammes Et Comment Choisir Le Bon -
+        Venngage ». Venngage Blog, 20 juin 2022,
+        https://fr.venngage.com/blog/types-de-diagrammes/.
+        Consulté le 21 sept. 2026.
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>
 
 <!-- Tu peux complètement modifier le contenu par dessus cette ligne -->
 
