@@ -1,3 +1,80 @@
+<style>
+/* ===== PINK / COQUETTE NAVIGATION ===== */
+
+#mySidebar {
+  background-color: #fff5fa !important;
+  color: #4a3741 !important;
+  border-right: 2px solid #f2c6d9 !important;
+  box-shadow: 4px 0 15px rgba(214, 123, 157, 0.12) !important;
+}
+
+/* ===== LOGO / HOME ===== */
+
+#mySidebar > a:first-child {
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf3) !important;
+  border-bottom: 2px solid #f2c6d9 !important;
+  text-align: center;
+  padding: 18px !important;
+}
+
+#mySidebar > a:first-child img {
+  max-width: 80%;
+}
+
+/* ===== CLOSE BUTTON ===== */
+
+#mySidebar .w3-hide-large {
+  background-color: #f7d9e6 !important;
+  color: #b84f7d !important;
+  border-bottom: 1px solid #f2c6d9 !important;
+}
+
+#mySidebar .w3-hide-large:hover {
+  background-color: #f3c8da !important;
+  color: #b84f7d !important;
+}
+
+/* ===== MODULE HEADERS ===== */
+
+#mySidebar .w3-teal {
+  background: linear-gradient(135deg, #d9789e, #c45b87) !important;
+  color: white !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e5a5be !important;
+}
+
+/* ===== MODULE LINKS ===== */
+
+#mySidebar .w3-button {
+  background-color: #fffafd !important;
+  color: #5a414d !important;
+  border-bottom: 1px solid #f6dce7 !important;
+  transition: all 0.2s ease;
+}
+
+#mySidebar .w3-button:hover {
+  background-color: #fce5ef !important;
+  color: #b84f7d !important;
+  padding-left: 22px !important;
+}
+
+/* ===== MODULE SPACING ===== */
+
+#mySidebar > div {
+  margin-bottom: 4px;
+}
+
+/* ===== MOBILE ===== */
+
+@media screen and (max-width: 992px) {
+  #mySidebar {
+    box-shadow: 4px 0 20px rgba(214, 123, 157, 0.18) !important;
+  }
+}
+</style>
+
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
   <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="index.html"><img src="http://mmebernatchez.ca/wp-content/uploads/2021/01/logo-1.png" style="width:80%;"></a>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
