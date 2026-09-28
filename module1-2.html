@@ -9,18 +9,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+/* =========================================================
+   PINK / COQUETTE THEME
+   ========================================================= */
+
 body {
   font-family: "Roboto", sans-serif;
   background-color: #fff5fa;
   color: #4a3741;
 }
 
-.w3-bar-block .w3-bar-item {
-  padding: 16px;
-  font-weight: bold;
-}
-
-/* ===== PINK / COQUETTE W3 THEME ===== */
+/* ===== W3 THEME ===== */
 
 .w3-theme,
 .w3-theme-d1,
@@ -60,7 +59,7 @@ body {
 /* ===== TOP BAR ===== */
 
 #myTop {
-  background-color: #d9789e !important;
+  background: linear-gradient(135deg, #d9789e, #c45b87) !important;
   color: white !important;
   box-shadow: 0 4px 15px rgba(214, 123, 157, 0.20);
 }
@@ -120,12 +119,143 @@ footer.w3-theme {
   color: #8d5b70 !important;
   border-top: 2px solid #f1bdd2;
 }
+
+/* =========================================================
+   INNER PAGE
+   ========================================================= */
+
+.page {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* ===== INNER HEADER ===== */
+
+.header {
+  text-align: center;
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf3);
+  border: 2px solid #f3b6d0;
+  border-radius: 28px;
+  padding: 35px 25px;
+  margin-bottom: 35px;
+  box-shadow: 0 8px 25px rgba(214, 123, 157, 0.15);
+}
+
+.header h1 {
+  margin: 0;
+  color: #b84f7d;
+  font-size: 2.5em;
+}
+
+.header p {
+  margin: 10px 0 0;
+  color: #8d5b70;
+  font-size: 1.05em;
+}
+
+/* ===== SECTIONS ===== */
+
+.section {
+  background: #ffffff;
+  border: 1px solid #f2c6d9;
+  border-radius: 22px;
+  padding: 28px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 20px rgba(214, 123, 157, 0.10);
+}
+
+.section-title {
+  color: #b84f7d;
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 22px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f7d4e2;
+}
+
+/* ===== CONTENT CARDS ===== */
+
+.content-card {
+  background: #fff8fb;
+  border-left: 5px solid #e99aba;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin: 18px 0;
+  box-shadow: 0 3px 10px rgba(214, 123, 157, 0.06);
+}
+
+.content-card h2 {
+  color: #c45b87;
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.3em;
+}
+
+.content-card p {
+  margin: 0;
+}
+
+/* ===== EXERCISES ===== */
+
+.exercise-card {
+  background: #fff8fb;
+  border: 1px solid #f3c8da;
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(214, 123, 157, 0.08);
+}
+
+.exercise-card p {
+  margin-bottom: 18px;
+}
+
+.exercise-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #f4a9c7, #d9789e);
+  color: white;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.2s ease;
+  box-shadow: 0 4px 10px rgba(214, 123, 157, 0.15);
+}
+
+.exercise-link:hover {
+  background: #b84f7d;
+  transform: translateY(-2px);
+}
+
+/* ===== SMALL DETAILS ===== */
+
+.heart {
+  color: #d9789e;
+  font-size: 1.1em;
+}
+
+/* ===== VERSION MOBILE ===== */
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .section {
+    padding: 20px;
+  }
+}
 </style>
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
+
 <!--Navigation bar-->
 <div id="nav-placeholder">
 
@@ -138,7 +268,10 @@ $(function(){
 </script>
 <!--end of Navigation bar-->
 
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large w3-animate-opacity"
+onclick="w3_close()"
+style="cursor:pointer"
+id="myOverlay"></div>
 
 <div class="w3-main" style="margin-left:250px;">
 
