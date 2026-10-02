@@ -162,6 +162,702 @@
             </p>
         </section>
 
+<div id="laboratoire-rose">
+  <style>
+    #laboratoire-rose {
+      --rose: #ed77ad;
+      --rose-fonce: #bd347c;
+      --rose-pale: #fff0f7;
+      --rose-clair: #ffe0ee;
+      --texte: #70445f;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: var(--texte);
+      max-width: 1050px;
+      margin: 25px auto;
+      padding: 22px;
+      border: 2px solid #f7b6d4;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #fffafd, #ffedf5);
+      box-shadow: 0 8px 25px #d56b9c20;
+      box-sizing: border-box;
+    }
+
+    #laboratoire-rose * { box-sizing: border-box; }
+
+    #laboratoire-rose h2 {
+      text-align: center;
+      color: var(--rose-fonce);
+      font-family: Georgia, serif;
+      font-size: clamp(24px, 4vw, 34px);
+      margin: 5px 0 8px;
+    }
+
+    #laboratoire-rose .sous-titre {
+      text-align: center;
+      line-height: 1.7;
+      margin: 0 auto 24px;
+      max-width: 700px;
+    }
+
+    #laboratoire-rose h3 {
+      color: var(--rose-fonce);
+      font-family: Georgia, serif;
+      margin: 0 0 15px;
+      font-size: 20px;
+    }
+
+    #laboratoire-rose .carte {
+      background: #ffffffdc;
+      border: 1.5px solid #f6c2da;
+      border-radius: 19px;
+      padding: 19px;
+      margin: 15px 0;
+      box-shadow: 0 4px 12px #c45b9010;
+    }
+
+    #laboratoire-rose label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 9px;
+    }
+
+    #laboratoire-rose textarea {
+      display: block;
+      width: 100%;
+      min-height: 115px;
+      padding: 13px;
+      border: 1.5px solid #efafd0;
+      border-radius: 13px;
+      background: #fffafd;
+      color: var(--texte);
+      font: inherit;
+      line-height: 1.6;
+      resize: vertical;
+    }
+
+    #laboratoire-rose button {
+      border: 1px solid var(--rose);
+      background: linear-gradient(135deg, #f68cbb, #e961a0);
+      color: white;
+      padding: 11px 15px;
+      margin: 4px 3px 4px 0;
+      border-radius: 13px;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    #laboratoire-rose button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px #d95b982d;
+    }
+
+    #laboratoire-rose button:focus-visible,
+    #laboratoire-rose textarea:focus-visible,
+    #laboratoire-rose input:focus-visible {
+      outline: 3px solid #bd347c;
+      outline-offset: 3px;
+    }
+
+    #laboratoire-rose .secondaire {
+      background: #fff0f7;
+      color: var(--rose-fonce);
+    }
+
+    #laboratoire-rose .curseur {
+      width: 100%;
+      accent-color: var(--rose-fonce);
+      cursor: pointer;
+    }
+
+    #laboratoire-rose .valeur-rose {
+      color: var(--rose-fonce);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    #laboratoire-rose .graphique {
+      width: 100%;
+    }
+
+    #laboratoire-rose canvas {
+      display: block;
+      width: 100%;
+      height: 340px;
+    }
+
+    #laboratoire-rose .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+      gap: 10px;
+    }
+
+    #laboratoire-rose .stat {
+      padding: 15px 8px;
+      border: 1px solid #f5c2db;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #fff5fa, #ffe5f1);
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    #laboratoire-rose .stat small {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    #laboratoire-rose .stat strong {
+      color: var(--rose-fonce);
+      font-size: 21px;
+    }
+
+    #laboratoire-rose .message {
+      padding: 13px;
+      background: var(--rose-pale);
+      border: 1px solid #f7c8de;
+      border-radius: 13px;
+      line-height: 1.7;
+    }
+
+    #laboratoire-rose .boutons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    #laboratoire-rose .boutons button {
+      flex: 1 1 170px;
+    }
+
+    #laboratoire-rose .table-scroll {
+      overflow-x: auto;
+    }
+
+    #laboratoire-rose table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+      background: white;
+    }
+
+    #laboratoire-rose th,
+    #laboratoire-rose td {
+      padding: 10px;
+      border: 1px solid #f5d0e1;
+    }
+
+    #laboratoire-rose th {
+      color: var(--rose-fonce);
+      background: #ffe3f0;
+    }
+
+    #laboratoire-rose .erreur {
+      color: #a11e54;
+      font-weight: bold;
+    }
+
+    #laboratoire-rose .final {
+      padding: 22px;
+      margin-top: 20px;
+      border: 2px dashed #ed92bd;
+      border-radius: 20px;
+      background: #fff7fb;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    #laboratoire-rose .final strong {
+      color: var(--rose-fonce);
+    }
+
+    @media (max-width: 520px) {
+      #laboratoire-rose { padding: 12px; }
+      #laboratoire-rose .carte { padding: 13px; }
+      #laboratoire-rose canvas { height: 280px; }
+    }
+  </style>
+
+  <h2>♡ Mon laboratoire des distributions ♡</h2>
+
+  <p class="sous-titre">
+    Bienvenue dans mon petit laboratoire de statistiques ! 🎀
+    Explore les données, modifie la largeur des intervalles
+    et découvre comment la forme d'une distribution influence
+    les statistiques.
+  </p>
+
+  <section class="carte">
+    <h3>♡ 1. Entre tes données</h3>
+
+    <label for="lr-donnees">
+      Liste de données numériques
+    </label>
+
+    <textarea id="lr-donnees">12, 15, 16, 18, 18, 19, 20, 21, 22, 22, 23, 24, 25, 25, 26, 27, 28, 30, 32, 35, 36, 38, 40, 42, 45</textarea>
+
+    <p>
+      Sépare les nombres par des virgules, des espaces
+      ou des retours à la ligne.
+    </p>
+
+    <button type="button" id="lr-creer">
+      ✨ Créer mon histogramme
+    </button>
+
+    <button type="button" id="lr-reset" class="secondaire">
+      ↻ Réinitialiser
+    </button>
+
+    <p id="lr-erreur" class="erreur" role="status"></p>
+  </section>
+
+  <section class="carte">
+    <h3>♡ 2. La largeur des intervalles</h3>
+
+    <label for="lr-largeur">
+      Largeur actuelle :
+      <span id="lr-valeur" class="valeur-rose">5</span>
+    </label>
+
+    <input
+      class="curseur"
+      id="lr-largeur"
+      type="range"
+      min="0.5"
+      max="20"
+      step="0.5"
+      value="5"
+    >
+
+    <p>
+      Déplace le curseur pour voir comment la largeur
+      des classes change l'apparence de ton histogramme.
+    </p>
+  </section>
+
+  <section class="carte">
+    <h3>♡ 3. Ton histogramme interactif</h3>
+
+    <div class="graphique">
+      <canvas
+        id="lr-canvas"
+        role="img"
+        aria-label="Histogramme interactif des fréquences"
+      ></canvas>
+    </div>
+
+    <p id="lr-info" class="message" aria-live="polite"></p>
+  </section>
+
+  <section class="carte">
+    <h3>♡ 4. Calculatrice de statistiques</h3>
+
+    <div class="stats">
+      <div class="stat">
+        <small>Effectif (n)</small>
+        <strong id="lr-n">—</strong>
+      </div>
+
+      <div class="stat">
+        <small>Moyenne</small>
+        <strong id="lr-moyenne">—</strong>
+      </div>
+
+      <div class="stat">
+        <small>Médiane</small>
+        <strong id="lr-mediane">—</strong>
+      </div>
+
+      <div class="stat">
+        <small>Minimum</small>
+        <strong id="lr-min">—</strong>
+      </div>
+
+      <div class="stat">
+        <small>Maximum</small>
+        <strong id="lr-max">—</strong>
+      </div>
+
+      <div class="stat">
+        <small>Écart-type (population)</small>
+        <strong id="lr-ecart">—</strong>
+      </div>
+    </div>
+
+    <p id="lr-forme" class="message" aria-live="polite"></p>
+  </section>
+
+  <section class="carte">
+    <h3>♡ 5. Générateur de distributions</h3>
+
+    <p>
+      Choisis une forme pour générer automatiquement
+      de nouvelles données et les afficher dans ton histogramme.
+    </p>
+
+    <div class="boutons">
+      <button type="button" data-lr-forme="normale">
+        🌸 Normale
+      </button>
+
+      <button type="button" data-lr-forme="asymetrique">
+        🌙 Asymétrique
+      </button>
+
+      <button type="button" data-lr-forme="bimodale">
+        🦋 Bimodale (en U)
+      </button>
+
+      <button type="button" data-lr-forme="uniforme">
+        ⭐ Uniforme
+      </button>
+    </div>
+  </section>
+
+  <section class="carte">
+    <h3>♡ 6. Tableau des fréquences</h3>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Intervalle</th>
+            <th>Effectif</th>
+          </tr>
+        </thead>
+        <tbody id="lr-tableau"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="final">
+    <div style="font-size:26px">🎀 ♡ 🎀</div>
+    <strong>Mon application permet de…</strong>
+    <p>
+      visualiser une distribution de données dans un histogramme
+      interactif, de modifier la largeur des intervalles,
+      de calculer des statistiques descriptives et de comparer
+      différentes formes de distributions.
+    </p>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.getElementById("laboratoire-rose");
+      const $ = id => root.querySelector("#" + id);
+
+      const zone = $("lr-donnees");
+      const curseur = $("lr-largeur");
+      const canvas = $("lr-canvas");
+      const ctx = canvas.getContext("2d");
+
+      const exemple =
+        "12, 15, 16, 18, 18, 19, 20, 21, 22, 22, 23, 24, 25, 25, 26, 27, 28, 30, 32, 35, 36, 38, 40, 42, 45";
+
+      let donnees = [];
+
+      function format(n) {
+        return Number(n.toFixed(3)).toLocaleString("fr-CA", {
+          maximumFractionDigits: 3
+        });
+      }
+
+      function lireDonnees() {
+        const texte = zone.value.trim();
+
+        if (!texte) {
+          throw new Error("Entre au moins un nombre.");
+        }
+
+        const morceaux = texte.split(/[\s,;]+/).filter(Boolean);
+        const nombres = morceaux.map(Number);
+
+        if (nombres.some(n => !Number.isFinite(n))) {
+          throw new Error(
+            "Vérifie tes données : utilise seulement des nombres."
+          );
+        }
+
+        if (nombres.length > 5000) {
+          throw new Error("Utilise au maximum 5 000 valeurs.");
+        }
+
+        return nombres;
+      }
+
+      function statistiques(d) {
+        const tries = [...d].sort((a, b) => a - b);
+        const n = d.length;
+        const moyenne = d.reduce((a, b) => a + b, 0) / n;
+
+        const mediane = n % 2 === 1
+          ? tries[Math.floor(n / 2)]
+          : (tries[n / 2 - 1] + tries[n / 2]) / 2;
+
+        const variance = d.reduce(
+          (s, x) => s + (x - moyenne) ** 2,
+          0
+        ) / n;
+
+        return {
+          n,
+          moyenne,
+          mediane,
+          min: tries[0],
+          max: tries[n - 1],
+          ecart: Math.sqrt(variance)
+        };
+      }
+
+      function afficherStatistiques() {
+        const s = statistiques(donnees);
+
+        $("lr-n").textContent = s.n;
+        $("lr-moyenne").textContent = format(s.moyenne);
+        $("lr-mediane").textContent = format(s.mediane);
+        $("lr-min").textContent = format(s.min);
+        $("lr-max").textContent = format(s.max);
+        $("lr-ecart").textContent = format(s.ecart);
+
+        const difference = s.moyenne - s.mediane;
+        const tolerance = Math.max(0.01, s.ecart * 0.1);
+
+        let observation;
+
+        if (Math.abs(difference) <= tolerance) {
+          observation =
+            "La moyenne et la médiane sont proches. " +
+            "La distribution pourrait être approximativement " +
+            "symétrique. Vérifie aussi la forme du graphique.";
+        } else if (difference > 0) {
+          observation =
+            "La moyenne est supérieure à la médiane. " +
+            "Cela peut indiquer une asymétrie vers la droite.";
+        } else {
+          observation =
+            "La moyenne est inférieure à la médiane. " +
+            "Cela peut indiquer une asymétrie vers la gauche.";
+        }
+
+        $("lr-forme").textContent = "♡ Observation : " + observation;
+      }
+
+      function dessiner() {
+        if (!donnees.length) return;
+
+        const largeur = Number(curseur.value);
+        $("lr-valeur").textContent = format(largeur);
+
+        const min = Math.min(...donnees);
+        const max = Math.max(...donnees);
+        const depart = Math.floor(min / largeur) * largeur;
+
+        const nombre = Math.max(
+          1,
+          Math.min(
+            1000,
+            Math.floor((max - depart) / largeur) + 1
+          )
+        );
+
+        const frequences = Array(nombre).fill(0);
+
+        donnees.forEach(x => {
+          let i = Math.floor((x - depart) / largeur);
+          i = Math.max(0, Math.min(nombre - 1, i));
+          frequences[i]++;
+        });
+
+        const rect = canvas.getBoundingClientRect();
+        const ratio = window.devicePixelRatio || 1;
+        const W = Math.max(280, rect.width);
+        const H = rect.height || 340;
+
+        canvas.width = Math.round(W * ratio);
+        canvas.height = Math.round(H * ratio);
+
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+
+        const m = { gauche: 43, droite: 12, haut: 20, bas: 62 };
+        const pw = W - m.gauche - m.droite;
+        const ph = H - m.haut - m.bas;
+        const maximum = Math.max(1, ...frequences);
+        const pas = Math.max(1, Math.ceil(maximum / 5));
+
+        ctx.font = "12px Trebuchet MS";
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        ctx.strokeStyle = "#f7d7e6";
+        ctx.fillStyle = "#8a5874";
+        ctx.lineWidth = 1;
+
+        for (let y = 0; y <= maximum; y += pas) {
+          const py = m.haut + ph - y / maximum * ph;
+
+          ctx.beginPath();
+          ctx.moveTo(m.gauche, py);
+          ctx.lineTo(m.gauche + pw, py);
+          ctx.stroke();
+
+          ctx.fillText(String(y), m.gauche - 8, py);
+        }
+
+        const bw = pw / nombre;
+
+        frequences.forEach((f, i) => {
+          const barH = f / maximum * ph;
+          const x = m.gauche + i * bw;
+          const y = m.haut + ph - barH;
+
+          const gradient = ctx.createLinearGradient(0, y, 0, H);
+          gradient.addColorStop(0, "#ed77ad");
+          gradient.addColorStop(1, "#f8c3dc");
+
+          ctx.fillStyle = gradient;
+          ctx.fillRect(x + 0.5, y, Math.max(0, bw - 1), barH);
+
+          if (nombre <= 25 && bw > 18 && f > 0) {
+            ctx.fillStyle = "#9f316b";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "bottom";
+            ctx.fillText(String(f), x + bw / 2, y - 3);
+          }
+        });
+
+        const etiquettes = Math.min(nombre, 8);
+        ctx.fillStyle = "#8a5874";
+        ctx.font = "11px Trebuchet MS";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+
+        for (let k = 0; k <= etiquettes; k++) {
+          const i = Math.min(
+            nombre - 1,
+            Math.round(k * nombre / etiquettes)
+          );
+
+          const x = m.gauche + i * bw;
+          const valeur = depart + i * largeur;
+
+          ctx.save();
+          ctx.translate(x, m.haut + ph + 8);
+          ctx.rotate(-Math.PI / 5);
+          ctx.fillText(format(valeur), 0, 0);
+          ctx.restore();
+        }
+
+        ctx.fillStyle = "#bd347c";
+        ctx.font = "bold 12px Trebuchet MS";
+        ctx.textAlign = "center";
+        ctx.fillText("Valeurs", m.gauche + pw / 2, H - 5);
+
+        ctx.save();
+        ctx.translate(12, m.haut + ph / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText("Fréquence", 0, 0);
+        ctx.restore();
+
+        $("lr-info").textContent =
+          donnees.length + " données • " + nombre +
+          " intervalles • Largeur : " + format(largeur) +
+          ". Les hauteurs représentent les effectifs.";
+
+        const tbody = $("lr-tableau");
+        tbody.replaceChildren();
+
+        frequences.forEach((f, i) => {
+          const debut = depart + i * largeur;
+          const fin = debut + largeur;
+          const tr = document.createElement("tr");
+          const td1 = document.createElement("td");
+          const td2 = document.createElement("td");
+
+          td1.textContent =
+            "[" + format(debut) + " ; " + format(fin) +
+            (i === nombre - 1 ? "]" : "[");
+
+          td2.textContent = String(f);
+          tr.append(td1, td2);
+          tbody.appendChild(tr);
+        });
+
+        afficherStatistiques();
+      }
+
+      function actualiser() {
+        $("lr-erreur").textContent = "";
+
+        try {
+          donnees = lireDonnees();
+          dessiner();
+        } catch (e) {
+          $("lr-erreur").textContent = e.message;
+        }
+      }
+
+      function normale() {
+        const u1 = Math.max(Math.random(), 1e-10);
+        const u2 = Math.random();
+
+        return Math.sqrt(-2 * Math.log(u1)) *
+          Math.cos(2 * Math.PI * u2);
+      }
+
+      function generer(type) {
+        const n = 200;
+        const d = [];
+
+        for (let i = 0; i < n; i++) {
+          let x;
+
+          if (type === "normale") {
+            x = 50 + 12 * normale();
+          } else if (type === "asymetrique") {
+            x = 10 - 12 * Math.log(
+              Math.max(Math.random(), 1e-10)
+            );
+          } else if (type === "bimodale") {
+            const centre = Math.random() < 0.5 ? 30 : 70;
+            x = centre + 6 * normale();
+          } else {
+            x = 10 + Math.random() * 80;
+          }
+
+          d.push(Math.round(Math.max(0, x) * 10) / 10);
+        }
+
+        zone.value = d.map(format).join(", ");
+        actualiser();
+      }
+
+      $("lr-creer").addEventListener("click", actualiser);
+
+      $("lr-reset").addEventListener("click", () => {
+        zone.value = exemple;
+        curseur.value = 5;
+        actualiser();
+      });
+
+      curseur.addEventListener("input", dessiner);
+
+      root.querySelectorAll("[data-lr-forme]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          generer(btn.dataset.lrForme);
+        });
+      });
+
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(() => dessiner()).observe(canvas);
+      } else {
+        window.addEventListener("resize", dessiner);
+      }
+
+      actualiser();
+    })();
+  </script>
+</div>
         <footer>
             ♡ Fait avec soin et un peu de rose ♡
         </footer>
