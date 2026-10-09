@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.2 - Les mesures de tendance centrale</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --pink: #e85d91;
+  --dark-pink: #bd376e;
+  --light-pink: #fff0f6;
+  --pale-pink: #fff8fb;
+  --border: #f5a6c6;
+  --text: #70364f;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 25px 16px;
+  background: #fff5f9;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+}
+
+nav {
+  text-align: center;
+  padding: 14px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--dark-pink);
+  padding: 7px 13px;
+  margin: 3px;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+nav a:hover { background: var(--light-pink); }
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ffe0ed, #fffafd);
+  border: 2px solid var(--border);
+  border-radius: 25px;
+  margin-bottom: 25px;
+}
+
+.bow { font-size: 36px; }
+
+.eyebrow {
+  color: #b75c83;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+h1 {
+  color: var(--dark-pink);
+  font-size: clamp(29px, 5vw, 44px);
+  line-height: 1.25;
+  margin: 12px 0;
+}
+
+header p { margin-bottom: 0; }
+
+section { scroll-margin-top: 20px; }
+
+.panel {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 22px;
+  padding: 26px;
+  margin-bottom: 24px;
+  box-shadow: 0 5px 18px #e99abb12;
+}
+
+.section-title {
+  color: var(--dark-pink);
+  font-size: 25px;
+  margin: 0 0 12px;
+}
+
+.intro {
+  background: #fff0f6;
+  border-color: #f5bfd5;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.info-card {
+  background: var(--pale-pink);
+  border: 1px solid #f4c1d6;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.info-card h3 {
+  color: var(--dark-pink);
+  font-size: 20px;
+  margin: 5px 0 10px;
+}
+
+.symbol {
+  font-size: 27px;
+}
+
+.formula {
+  background: #ffe4ef;
+  color: #a72e64;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.note {
+  background: #fff0f6;
+  border-left: 4px solid var(--pink);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 18px;
+}
+
+.exercise-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.exercise {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid #f3c0d5;
+  border-radius: 16px;
+  background: #fffafd;
+}
+
+.exercise-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.exercise-content { flex: 1; }
+
+.exercise-content strong {
+  color: var(--dark-pink);
+  display: block;
+}
+
+.exercise-content p {
+  font-size: 13px;
+  margin: 3px 0 0;
+}
+
+.btn {
+  display: inline-block;
+  background: #fce0ec;
+  color: #a72e64;
+  padding: 9px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #f6bfd5;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #f7c4db;
+  transform: translateY(-2px);
+}
+
+.proof-box {
+  border: 2px dashed #efa0c1;
+  border-radius: 18px;
+  background: #fff8fb;
+  padding: 23px;
+  margin-top: 18px;
+}
+
+.proof-box h3 {
+  color: var(--dark-pink);
+  margin-top: 0;
+}
+
+.proof-list {
+  padding-left: 22px;
+}
+
+.proof-list li { margin-bottom: 9px; }
+
+.placeholder {
+  text-align: center;
+  border: 1.5px dashed #e9a1bd;
+  border-radius: 15px;
+  padding: 22px;
+  color: #a75b7e;
+  margin-top: 15px;
+  background: white;
+}
+
+.placeholder p { margin: 5px 0; }
+
+footer {
+  text-align: center;
+  padding: 25px 10px 10px;
+  color: #bd7896;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .info-grid { grid-template-columns: 1fr; }
+
+  .exercise {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .exercise .btn { margin-left: 42px; }
+
+  .panel { padding: 20px; }
+
+  nav a { padding: 6px 9px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <nav>
+    <a href="#accueil">♡ Accueil</a>
+    <a href="#informations">La leçon</a>
+    <a href="#exercices">Exercices</a>
+    <a href="#preuves">Vérification</a>
+  </nav>
+
+  <header id="accueil">
+    <div class="bow">🎀</div>
+    <div class="eyebrow">PORTFOLIO NUMÉRIQUE · MODULE 2.2</div>
+    <h1>2.2 - Les mesures de tendance centrale</h1>
+    <p>Comprendre les données, une étape à la fois ♡</p>
+  </header>
+
+  <!-- INFORMATIONS IMPORTANTES -->
+
+  <section class="panel intro" id="informations">
+    <h2 class="section-title">♡ Informations importantes de la leçon</h2>
+
+    <p>
+      Les mesures de tendance centrale permettent de représenter un
+      ensemble de données par une valeur centrale ou typique.
+      Les trois mesures principales sont la moyenne, la médiane et le mode.
+    </p>
+
+    <div class="info-grid">
+
+      <article class="info-card">
+        <div class="symbol">🌷</div>
+        <h3>La moyenne</h3>
+        <p>
+          On additionne toutes les valeurs, puis on divise la somme
+          par le nombre total de valeurs.
+        </p>
+        <div class="formula">
+          Moyenne = somme des valeurs ÷ nombre de valeurs
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="symbol">🎀</div>
+        <h3>La médiane</h3>
+        <p>
+          C'est la valeur située au milieu des données lorsqu'elles
+          sont classées en ordre croissant.
+        </p>
+        <div class="formula">
+          Classer les données avant de calculer
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="symbol">♡</div>
+        <h3>Le mode</h3>
+        <p>
+          C'est la valeur qui apparaît le plus souvent dans un
+          ensemble de données.
+        </p>
+        <div class="formula">
+          Repérer la fréquence la plus élevée
+        </div>
+      </article>
+
+    </div>
+
+    <div class="note">
+      <strong>À retenir !</strong>
+      <ul>
+        <li>La moyenne est influencée par les valeurs extrêmes.</li>
+        <li>La médiane dépend de la position des valeurs classées.</li>
+        <li>Un ensemble peut avoir plusieurs modes ou aucun mode.</li>
+        <li>Pour un nombre pair de données, la médiane est la moyenne
+        des deux valeurs centrales.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LIENS VERS LES EXERCICES -->
+
+  <section class="panel" id="exercices">
+    <h2 class="section-title">♡ Liens vers les exercices 2.3</h2>
+
+    <p>
+      Voici l'espace pour accéder aux exercices Google Docs associés
+      à cette leçon. Clique sur le lien correspondant pour commencer.
+    </p>
+
+    <div class="exercise-list">
+
+      <div class="exercise">
+        <div class="exercise-icon">📄</div>
+        <div class="exercise-content">
+          <strong>Exercices 2.3 — Google Docs</strong>
+          <p>Accéder aux questions et compléter les exercices.</p>
+        </div>
+        <a class="btn"
+           href="AJOUTE_ICI_LE_LIEN_GOOGLE_DOCS"
+           target="_blank"
+           rel="noopener noreferrer">
+          Ouvrir le document ↗
+        </a>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-icon">📝</div>
+        <div class="exercise-content">
+          <strong>Mes notes et mes calculs</strong>
+          <p>Un espace pour revoir les formules et les étapes de résolution.</p>
+        </div>
+        <a class="btn" href="#informations">
+          Revoir la leçon ↑
+        </a>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <strong>Petit rappel :</strong> assure-toi d'avoir accès au document
+      Google Docs avant de commencer les exercices.
+    </div>
+  </section>
+
+  <!-- PREUVES DE VÉRIFICATION -->
+
+  <section class="panel" id="preuves">
+    <h2 class="section-title">
+      ♡ Preuve de vérification avec la technologie
+    </h2>
+
+    <p>
+      Dans cette section, ajoute des preuves démontrant comment tu as
+      utilisé la technologie pour vérifier tes calculs et tes réponses.
+    </p>
+
+    <div class="proof-box">
+      <h3>🎀 Mes preuves</h3>
+
+      <ul class="proof-list">
+        <li>
+          Capture d'écran de la calculatrice utilisée pour vérifier
+          la moyenne.
+        </li>
+        <li>
+          Capture d'écran montrant les données classées et le calcul
+          de la médiane.
+        </li>
+        <li>
+          Preuve de vérification du mode et des fréquences.
+        </li>
+        <li>
+          Courte explication indiquant si les résultats obtenus avec
+          la technologie correspondent à mes calculs manuels.
+        </li>
+      </ul>
+
+      <div class="placeholder">
+        <div style="font-size: 32px;">📸 ♡</div>
+        <p><strong>Insère tes captures d'écran ici</strong></p>
+        <p>Remplace cet espace par tes preuves de vérification.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Réflexion :</strong>
+      La technologie me permet de vérifier mes calculs et de repérer
+      les erreurs possibles. Je dois quand même comprendre les étapes
+      pour pouvoir expliquer mes réponses.
+    </div>
+  </section>
+
+  <footer>
+    Fait avec des maths et beaucoup de rose ♡ 🎀
+    <br>
+    Portfolio numérique · Module 2.2
+  </footer>
+
+</div>
+</body>
+</html>
