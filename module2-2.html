@@ -1,10 +1,10 @@
-
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2.2 - Les mesures de tendance centrale</title>
+<title>2.2 – Les mesures de tendance centrale</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
@@ -18,13 +18,17 @@
   --text: #70364f;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  padding: 25px 16px;
+  padding: 28px 16px;
   background: #fff5f9;
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
@@ -32,47 +36,54 @@ body {
 }
 
 .container {
-  max-width: 1050px;
-  margin: auto;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 nav {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
   padding: 14px;
+  margin-bottom: 24px;
   background: white;
-  border: 1.5px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  margin-bottom: 28px;
 }
 
 nav a {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--dark-pink);
   padding: 7px 13px;
-  margin: 3px;
   border-radius: 20px;
+  color: var(--dark-pink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
   transition: 0.2s;
 }
 
-nav a:hover { background: var(--light-pink); }
+nav a:hover {
+  background: var(--light-pink);
+}
 
 header {
+  padding: 35px 20px;
+  margin-bottom: 24px;
   text-align: center;
-  padding: 40px 20px;
   background: linear-gradient(135deg, #ffe0ed, #fffafd);
   border: 2px solid var(--border);
   border-radius: 25px;
-  margin-bottom: 25px;
 }
 
-.bow { font-size: 36px; }
+.bow {
+  font-size: 38px;
+}
 
 .eyebrow {
   color: #b75c83;
-  letter-spacing: 2px;
   font-size: 12px;
   font-weight: 700;
+  letter-spacing: 2px;
 }
 
 h1, h2, h3 {
@@ -80,121 +91,122 @@ h1, h2, h3 {
 }
 
 h1 {
-  color: var(--dark-pink);
-  font-size: clamp(29px, 5vw, 44px);
-  line-height: 1.25;
   margin: 12px 0;
+  color: var(--dark-pink);
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.25;
 }
 
-header p { margin-bottom: 0; }
-
-section { scroll-margin-top: 20px; }
+header p {
+  margin-bottom: 0;
+}
 
 .panel {
+  padding: 26px;
+  margin-bottom: 24px;
   background: white;
   border: 1.5px solid var(--border);
   border-radius: 22px;
-  padding: 26px;
-  margin-bottom: 24px;
   box-shadow: 0 5px 18px #e99abb12;
+  scroll-margin-top: 20px;
 }
 
 .section-title {
+  margin: 0 0 12px;
   color: var(--dark-pink);
   font-size: 25px;
-  margin: 0 0 12px;
 }
 
 .intro {
-  background: #fff0f6;
-  border-color: #f5bfd5;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.info-card {
-  background: var(--pale-pink);
-  border: 1px solid #f4c1d6;
-  border-radius: 18px;
-  padding: 20px;
-}
-
-.info-card h3 {
-  color: var(--dark-pink);
-  font-size: 20px;
-  margin: 5px 0 10px;
-}
-
-.symbol {
-  font-size: 27px;
-}
-
-.formula {
-  background: #ffe4ef;
-  color: #a72e64;
-  border-radius: 12px;
-  padding: 10px;
-  text-align: center;
-  font-weight: 700;
-  margin-top: 12px;
-}
-
-.note {
-  background: #fff0f6;
-  border-left: 4px solid var(--pink);
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: 18px;
-}
-
-.exercise-list {
-  display: grid;
-  gap: 14px;
-  margin-top: 20px;
-}
-
-.exercise {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 17px;
-  border: 1px solid #f3c0d5;
-  border-radius: 16px;
   background: #fffafd;
 }
 
-.exercise-icon {
-  font-size: 28px;
-  flex-shrink: 0;
+.video-card {
+  max-width: 700px;
+  padding: 14px;
+  margin: 22px auto;
+  background: var(--light-pink);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
 }
 
-.exercise-content { flex: 1; }
-
-.exercise-content strong {
+.video-title {
+  padding: 6px 0 14px;
   color: var(--dark-pink);
-  display: block;
+  text-align: center;
+  font-weight: 700;
+  font-size: 19px;
 }
 
-.exercise-content p {
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fce0ec;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.hint {
+  margin: 12px 0 2px;
+  color: #a75b7e;
+  text-align: center;
   font-size: 13px;
-  margin: 3px 0 0;
+}
+
+.resource-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  margin-top: 18px;
+  background: var(--pale-pink);
+  border: 1px solid #f3c0d5;
+  border-radius: 18px;
+}
+
+.resource-icon {
+  flex-shrink: 0;
+  font-size: 32px;
+}
+
+.resource-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.resource-content strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--dark-pink);
+  font-size: 16px;
+}
+
+.resource-content p {
+  margin: 0;
+  font-size: 13px;
 }
 
 .btn {
   display: inline-block;
+  padding: 10px 17px;
+  border: 1px solid #f0a7c5;
+  border-radius: 25px;
   background: #fce0ec;
   color: #a72e64;
-  padding: 9px 16px;
-  border-radius: 20px;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  border: 1px solid #f6bfd5;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
   white-space: nowrap;
   transition: 0.2s;
 }
@@ -204,57 +216,69 @@ section { scroll-margin-top: 20px; }
   transform: translateY(-2px);
 }
 
-.proof-box {
-  border: 2px dashed #efa0c1;
-  border-radius: 18px;
-  background: #fff8fb;
-  padding: 23px;
-  margin-top: 18px;
-}
-
-.proof-box h3 {
-  color: var(--dark-pink);
-  margin-top: 0;
-}
-
-.proof-list {
-  padding-left: 22px;
-}
-
-.proof-list li { margin-bottom: 9px; }
-
-.placeholder {
+.proof-card {
+  padding: 26px 20px;
+  margin-top: 20px;
   text-align: center;
-  border: 1.5px dashed #e9a1bd;
-  border-radius: 15px;
-  padding: 22px;
-  color: #a75b7e;
-  margin-top: 15px;
-  background: white;
+  background: linear-gradient(135deg, #fff0f6, #fffafd);
+  border: 2px dashed #efa0c1;
+  border-radius: 20px;
 }
 
-.placeholder p { margin: 5px 0; }
+.proof-icon {
+  margin-bottom: 8px;
+  font-size: 40px;
+}
+
+.proof-card h3 {
+  margin: 8px 0;
+  color: var(--dark-pink);
+  font-size: 22px;
+}
+
+.proof-card p {
+  max-width: 480px;
+  margin: 0 auto 20px;
+  font-size: 14px;
+}
+
+.proof-card .btn {
+  padding: 12px 23px;
+  font-size: 14px;
+}
 
 footer {
-  text-align: center;
-  padding: 25px 10px 10px;
+  padding: 20px 10px 5px;
   color: #bd7896;
+  text-align: center;
   font-size: 13px;
 }
 
-@media (max-width: 700px) {
-  .info-grid { grid-template-columns: 1fr; }
-
-  .exercise {
-    align-items: flex-start;
-    flex-wrap: wrap;
+@media (max-width: 600px) {
+  body {
+    padding: 18px 12px;
   }
 
-  .exercise .btn { margin-left: 42px; }
+  .panel {
+    padding: 19px;
+  }
 
-  .panel { padding: 20px; }
+  .resource-card {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
-  nav a { padding: 6px 9px; }
+  .resource-content {
+    flex-basis: calc(100% - 55px);
+  }
+
+  .resource-card .btn {
+    width: 100%;
+  }
+
+  nav a {
+    padding: 6px 10px;
+  }
 }
 </style>
 </head>
@@ -262,218 +286,120 @@ footer {
 <body>
 <div class="container">
 
+  <!-- NAVIGATION -->
   <nav>
     <a href="#accueil">♡ Accueil</a>
-    <a href="#informations">La leçon</a>
-    <a href="#exercices">Exercices</a>
-    <a href="#preuves">Vérification</a>
+    <a href="#lecon">🎀 La leçon</a>
+    <a href="#exercices">📄 Exercices</a>
+    <a href="#preuves">💗 Preuves</a>
   </nav>
 
+  <!-- TITRE -->
   <header id="accueil">
     <div class="bow">🎀</div>
     <div class="eyebrow">PORTFOLIO NUMÉRIQUE · MODULE 2.2</div>
-    <h1>2.2 - Les mesures de tendance centrale</h1>
+    <h1>Les mesures de tendance centrale</h1>
     <p>Comprendre les données, une étape à la fois ♡</p>
   </header>
 
-  <!-- INFORMATIONS IMPORTANTES -->
+  <!-- 1. VIDÉO DE LA LEÇON -->
+  <section class="panel intro" id="lecon">
+    <h2 class="section-title">♡ 1. Informations importantes de la leçon</h2>
 
- 
-<!-- INFORMATIONS IMPORTANTES DE LA LEÇON -->
-
-<section class="panel intro" id="informations">
-  <h2 class="section-title">
-    ♡ Informations importantes de la leçon
-  </h2>
-
-  <p>
-    Clique sur la vidéo ci-dessous pour revoir les notions importantes
-    de la leçon. 🎀
-  </p>
-
-  <div style="
-    max-width: 650px;
-    margin: 22px auto;
-    padding: 12px;
-    background: #fff0f6;
-    border: 1.5px solid #f5a6c6;
-    border-radius: 20px;
-    box-shadow: 0 5px 18px #e99abb20;
-  ">
-    <div style="
-      text-align: center;
-      color: #bd376e;
-      font-size: 22px;
-      padding: 8px;
-    ">
-      🎀 La vidéo de la leçon ♡
-    </div>
-
-    <div style="
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 14px;
-    ">
-      <iframe
-        src="https://www.youtube.com/embed/EJemilr-FTs?si=8trNhW8regssbXfm"
-        title="Vidéo sur les mesures de tendance centrale"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          border: 0;
-        ">
-      </iframe>
-    </div>
-
-    <p style="
-      text-align: center;
-      color: #a75b7e;
-      font-size: 14px;
-      margin: 12px 5px 5px;
-    ">
-      ♡ Prends quelques notes pendant le visionnement !
+    <p>
+      Commence par visionner la vidéo pour revoir les notions
+      importantes sur les mesures de tendance centrale. Prends
+      quelques notes pour t'aider à compléter les exercices ! 🎀
     </p>
-  </div>
 
-  <p style="text-align: center;">
-    <a
-      href="https://www.youtube.com/watch?v=EJemilr-FTs"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn">
-      Regarder sur YouTube ↗
-    </a>
-  </p>
-</section>
-  <!-- LIENS VERS LES EXERCICES -->
+    <div class="video-card">
+      <div class="video-title">🎀 La vidéo de la leçon ♡</div>
 
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/EJemilr-FTs"
+          title="Vidéo sur les mesures de tendance centrale"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="hint">
+        ♡ Regarde attentivement et note les éléments importants.
+      </p>
+    </div>
+
+    <p style="text-align:center;">
+      <a
+        class="btn"
+        href="https://www.youtube.com/watch?v=EJemilr-FTs"
+        target="_blank"
+        rel="noopener noreferrer">
+        Regarder sur YouTube ↗
+      </a>
+    </p>
+  </section>
+
+  <!-- 2. EXERCICES GOOGLE DOCS -->
   <section class="panel" id="exercices">
-    <h2 class="section-title">♡ Liens vers les exercices 2.3</h2>
+    <h2 class="section-title">♡ 2. Exercices 2.3</h2>
 
     <p>
-     https://docs.google.com/document/d/10Zmcj6bB2eVPOG-ljRIx_wn98MuoGxZvXGeS4ZbY8GU/edit?usp=sharing 
+      Après avoir revu la leçon, ouvre le document Google Docs
+      pour accéder aux questions et compléter les exercices. 📚
     </p>
 
-    <div class="exercise-list">
+    <div class="resource-card">
+      <div class="resource-icon">📄</div>
 
-      <div class="exercise">
-        <div class="exercise-icon">📄</div>
-        <div class="exercise-content">
-          <strong>Exercices 2.3 — Google Docs</strong>
-          <p>Accéder aux questions et compléter les exercices.</p>
-        </div>
-        <a class="btn"
-           href="AJOUTE_ICI_LE_LIEN_GOOGLE_DOCS"
-           target="_blank"
-           rel="noopener noreferrer">
-          Ouvrir le document ↗
+      <div class="resource-content">
+        <strong>Exercices 2.3 — Google Docs</strong>
+        <p>Consulte les questions et complète ton travail.</p>
+      </div>
 
-  <!-- PREUVES DE VÉRIFICATION -->
-
-  <section class="panel" id="preuves">
-    <h2 class="section-title">
-      ♡ Preuve de vérification avec la technologie
-    </h2>
-
-    <p>
-      Dans cette section, ajoute des preuves démontrant comment tu as
-      utilisé la technologie pour vérifier tes calculs et tes réponses.
-    </p>
-
-    <div class="proof-box">
-      <h3>🎀 Mes preuves</h3>
-
-  
-<!-- PREUVES DE VÉRIFICATION AVEC LA TECHNOLOGIE -->
-
-<section class="panel" id="preuves">
-
-  <h2 class="section-title">
-    ♡ Preuves de vérification avec la technologie
-  </h2>
-
-  <p>
-    Voici les preuves de vérification de mes calculs à l'aide
-    de la technologie. Consulte le document ci-dessous pour
-    voir mon travail et mes résultats. 🎀
-  </p>
-
-  <div style="
-    max-width: 650px;
-    margin: 25px auto;
-    padding: 28px 20px;
-    text-align: center;
-    background: linear-gradient(135deg, #fff0f6, #fffafd);
-    border: 2px solid #f5a6c6;
-    border-radius: 22px;
-    box-shadow: 0 5px 18px #e99abb20;
-  ">
-
-    <div style="font-size: 42px; margin-bottom: 10px;">
-      📄 🎀
+      <a
+        class="btn"
+        href="https://docs.google.com/document/d/10Zmcj6bB2eVPOG-ljRIx_wn98MuoGxZvXGeS4ZbY8GU/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ouvrir les exercices ↗
+      </a>
     </div>
+  </section>
 
-    <h3 style="
-      font-family: 'Playfair Display', Georgia, serif;
-      color: #bd376e;
-      font-size: 23px;
-      margin: 8px 0;
-    ">
-      Mon document de vérification
-    </h3>
+  <!-- 3. PREUVES DE VÉRIFICATION -->
+  <section class="panel" id="preuves">
+    <h2 class="section-title">♡ 3. Preuves de vérification avec la technologie</h2>
 
-    <p style="
-      color: #70364f;
-      font-size: 14px;
-      margin-bottom: 22px;
-    ">
-      Retrouve mes preuves, mes calculs et la vérification
-      de mes réponses à l'aide de la technologie. ♡
+    <p>
+      Consulte le document ci-dessous pour retrouver mes preuves
+      de vérification, mes calculs et les résultats obtenus à l'aide
+      de la technologie. 🎀
     </p>
 
-    <a
-      href="COLLE_ICI_TON_LIEN_GOOGLE_DOCS"
-      target="_blank"
-      rel="noopener noreferrer"
-      style="
-        display: inline-block;
-        padding: 12px 24px;
-        background: #f7c5db;
-        color: #96345f;
-        border: 1px solid #ed9fbe;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 14px;
-        transition: 0.2s;
-      "
-      onmouseover="this.style.background='#f3aaca'"
-      onmouseout="this.style.background='#f7c5db'"
-    >
-      Ouvrir mon Google Docs ↗
-    </a>
+    <div class="proof-card">
+      <div class="proof-icon">📑 🎀</div>
 
-    <p style="
-      color: #bd7896;
-      font-size: 12px;
-      margin-top: 18px;
-      margin-bottom: 0;
-    ">
-      ♡ Mes apprentissages, mes calculs, mes preuves ♡
-    </p>
+      <h3>Mon document de vérification</h3>
 
-  </div>
+      <p>
+        Mes calculs, mes résultats et mes preuves de vérification,
+        regroupés dans un seul document. ♡
+      </p>
 
-</section>
+      <a
+        class="btn"
+        href="https://docs.google.com/document/d/1BovJSohjJSnJyLB8yoElcaN0082NXd6D5qWV-zWr39U/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ouvrir mes preuves ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
   <footer>
     Fait avec des maths et beaucoup de rose ♡ 🎀
     <br>
@@ -483,3 +409,4 @@ footer {
 </div>
 </body>
 </html>
+```
