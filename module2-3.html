@@ -1,1 +1,647 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>2.3 – Les mesures de dispersion</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --pink: #e85d91;
+  --dark-pink: #bd376e;
+  --light-pink: #fff0f6;
+  --pale-pink: #fff8fb;
+  --border: #f5a6c6;
+  --text: #70364f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 28px 16px;
+  background: #fff5f9;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.75;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px;
+  margin-bottom: 24px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+nav a {
+  padding: 7px 12px;
+  color: var(--dark-pink);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  background: var(--light-pink);
+}
+
+header {
+  padding: 38px 22px;
+  margin-bottom: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #ffe0ed, #fffafd);
+  border: 2px solid var(--border);
+  border-radius: 25px;
+}
+
+.bow {
+  font-size: 38px;
+}
+
+.eyebrow {
+  color: #b75c83;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+h1 {
+  margin: 12px 0;
+  color: var(--dark-pink);
+  font-size: clamp(29px, 5vw, 43px);
+  line-height: 1.25;
+}
+
+header p {
+  margin-bottom: 0;
+}
+
+.panel {
+  padding: 26px;
+  margin-bottom: 24px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 5px 18px #e99abb12;
+  scroll-margin-top: 20px;
+}
+
+.section-title {
+  margin: 0 0 14px;
+  color: var(--dark-pink);
+  font-size: 25px;
+  line-height: 1.4;
+}
+
+.sub-title {
+  margin: 22px 0 8px;
+  color: var(--dark-pink);
+  font-size: 20px;
+}
+
+.intro {
+  background: #fffafd;
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.concept-card {
+  padding: 20px;
+  background: var(--pale-pink);
+  border: 1px solid #f3c0d5;
+  border-radius: 18px;
+}
+
+.concept-card h3 {
+  margin: 5px 0 8px;
+  color: var(--dark-pink);
+  font-size: 20px;
+}
+
+.concept-card p {
+  margin: 8px 0;
+}
+
+.card-icon {
+  font-size: 28px;
+}
+
+.formula {
+  padding: 12px;
+  margin: 14px 0;
+  background: #ffe4ef;
+  color: #a72e64;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.example {
+  padding: 15px 18px;
+  margin-top: 16px;
+  background: #fff8fb;
+  border-left: 4px solid var(--pink);
+  border-radius: 10px;
+}
+
+.example strong {
+  color: var(--dark-pink);
+}
+
+.note {
+  padding: 15px 18px;
+  margin-top: 18px;
+  background: var(--light-pink);
+  border: 1px solid #f5bfd5;
+  border-radius: 14px;
+}
+
+.note strong {
+  color: var(--dark-pink);
+}
+
+.steps {
+  padding-left: 24px;
+}
+
+.steps li {
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin: 16px 0;
+}
+
+.data span {
+  min-width: 38px;
+  padding: 7px 12px;
+  background: #ffe4ef;
+  color: var(--dark-pink);
+  border: 1px solid #f5bfd5;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #fce0ec;
+  color: #a72e64;
+  border: 1px solid #f0a7c5;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #f7c4db;
+  transform: translateY(-2px);
+}
+
+footer {
+  padding: 22px 10px 5px;
+  color: #bd7896;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  body {
+    padding: 18px 12px;
+  }
+
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  nav a {
+    padding: 6px 9px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#accueil">♡ Accueil</a>
+    <a href="#dispersion">Les mesures</a>
+    <a href="#etendue">L'étendue</a>
+    <a href="#quartiles">Les quartiles</a>
+    <a href="#interquartile">Écart interquartile</a>
+    <a href="#ecart-type">Écart type</a>
+    <a href="#calcul">Calcul</a>
+  </nav>
+
+  <!-- TITRE -->
+  <header id="accueil">
+    <div class="bow">🎀</div>
+    <div class="eyebrow">PORTFOLIO NUMÉRIQUE · MODULE 2.3</div>
+    <h1>Les mesures de dispersion</h1>
+    <p>Comprendre la répartition des données, une étape à la fois ♡</p>
+  </header>
+
+  <!-- 1. MESURES DE DISPERSION -->
+  <section class="panel intro" id="dispersion">
+    <h2 class="section-title">♡ Les mesures de dispersion</h2>
+
+    <p>
+      Les mesures de dispersion servent à comprendre à quel point
+      les données d'un ensemble sont réparties ou éloignées les unes
+      des autres. Elles permettent de voir si les valeurs sont
+      regroupées près de la moyenne ou si elles sont très dispersées.
+    </p>
+
+    <p>
+      Contrairement aux mesures de tendance centrale, qui indiquent
+      une valeur représentative d'un ensemble, les mesures de
+      dispersion décrivent la variabilité des données.
+    </p>
+
+    <div class="example">
+      <strong>Exemple :</strong>
+      Deux classes peuvent avoir la même moyenne à un test, mais
+      des résultats différents. Dans une classe, les notes peuvent
+      être très proches les unes des autres. Dans l'autre, certaines
+      notes peuvent être beaucoup plus élevées ou plus faibles.
+      Les mesures de dispersion permettent de comparer ces situations.
+    </div>
+  </section>
+
+  <!-- 2. MÉTHODES DE MESURE -->
+  <section class="panel" id="methodes">
+    <h2 class="section-title">♡ Les méthodes de mesure de dispersion</h2>
+
+    <p>
+      Il existe plusieurs façons de mesurer la dispersion des données.
+      Les principales méthodes étudiées dans ce module sont l'étendue,
+      les quartiles, l'écart interquartile et l'écart type.
+    </p>
+
+    <div class="concept-grid">
+
+      <div class="concept-card">
+        <div class="card-icon">📏</div>
+        <h3>L'étendue</h3>
+        <p>
+          Mesure la différence entre la plus grande et la plus petite
+          valeur d'un ensemble.
+        </p>
+        <a class="btn" href="#etendue">En savoir plus ↓</a>
+      </div>
+
+      <div class="concept-card">
+        <div class="card-icon">🎀</div>
+        <h3>Les quartiles</h3>
+        <p>
+          Divisent les données ordonnées en quatre parties contenant
+          approximativement le même nombre de valeurs.
+        </p>
+        <a class="btn" href="#quartiles">En savoir plus ↓</a>
+      </div>
+
+      <div class="concept-card">
+        <div class="card-icon">📊</div>
+        <h3>L'écart interquartile</h3>
+        <p>
+          Mesure la dispersion des 50 % centraux des données.
+        </p>
+        <a class="btn" href="#interquartile">En savoir plus ↓</a>
+      </div>
+
+      <div class="concept-card">
+        <div class="card-icon">💗</div>
+        <h3>L'écart type</h3>
+        <p>
+          Mesure à quel point les valeurs s'éloignent généralement
+          de la moyenne.
+        </p>
+        <a class="btn" href="#ecart-type">En savoir plus ↓</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. ÉTENDUE -->
+  <section class="panel" id="etendue">
+    <h2 class="section-title">♡ L'étendue</h2>
+
+    <p>
+      L'étendue est la différence entre la valeur maximale et la
+      valeur minimale d'un ensemble de données. Elle donne une idée
+      de l'écart total entre les deux valeurs extrêmes.
+    </p>
+
+    <div class="formula">
+      Étendue = valeur maximale − valeur minimale
+    </div>
+
+    <div class="example">
+      <strong>Exemple :</strong>
+      Voici un ensemble de résultats :
+      <div class="data">
+        <span>4</span>
+        <span>6</span>
+        <span>7</span>
+        <span>9</span>
+        <span>12</span>
+      </div>
+
+      La valeur maximale est 12 et la valeur minimale est 4.
+
+      <div class="formula">
+        Étendue = 12 − 4 = 8
+      </div>
+
+      L'étendue est donc de 8.
+    </div>
+
+    <div class="note">
+      <strong>À retenir ♡</strong>
+      Une grande étendue indique que les valeurs extrêmes sont
+      éloignées l'une de l'autre. Cependant, elle ne décrit pas
+      la répartition de toutes les valeurs entre ces deux extrêmes.
+    </div>
+  </section>
+
+  <!-- 4. QUARTILES -->
+  <section class="panel" id="quartiles">
+    <h2 class="section-title">♡ Les quartiles</h2>
+
+    <p>
+      Les quartiles sont des valeurs qui divisent un ensemble de
+      données ordonnées en quatre parties. Chaque partie représente
+      environ 25 % des données.
+    </p>
+
+    <ul class="steps">
+      <li>
+        <strong>Premier quartile (Q1) :</strong>
+        correspond à la médiane de la moitié inférieure des données.
+        Environ 25 % des données se trouvent à cette valeur ou en dessous.
+      </li>
+      <li>
+        <strong>Deuxième quartile (Q2) :</strong>
+        correspond à la médiane de l'ensemble des données. Il sépare
+        les données en deux moitiés.
+      </li>
+      <li>
+        <strong>Troisième quartile (Q3) :</strong>
+        correspond à la médiane de la moitié supérieure des données.
+        Environ 75 % des données se trouvent à cette valeur ou en dessous.
+      </li>
+    </ul>
+
+    <div class="example">
+      <strong>Exemple :</strong>
+      Considérons les données ordonnées suivantes :
+      <div class="data">
+        <span>2</span>
+        <span>4</span>
+        <span>6</span>
+        <span>8</span>
+        <span>10</span>
+        <span>12</span>
+        <span>14</span>
+      </div>
+
+      Pour cet exemple :
+      <ul>
+        <li>Q1 = 4</li>
+        <li>Q2 = 8</li>
+        <li>Q3 = 12</li>
+      </ul>
+
+      La médiane est 8. La moitié inférieure est 2, 4, 6 et la
+      moitié supérieure est 10, 12, 14.
+    </div>
+
+    <div class="note">
+      <strong>Important :</strong>
+      Les méthodes de calcul des quartiles peuvent varier selon
+      la convention utilisée en classe, particulièrement lorsque
+      le nombre de données est pair. Il faut suivre la méthode
+      enseignée par ton professeur.
+    </div>
+  </section>
+
+  <!-- 5. ÉCART INTERQUARTILE -->
+  <section class="panel" id="interquartile">
+    <h2 class="section-title">♡ L'écart interquartile</h2>
+
+    <p>
+      L'écart interquartile représente la différence entre le
+      troisième quartile et le premier quartile. Il mesure la
+      dispersion des 50 % centraux des données.
+    </p>
+
+    <div class="formula">
+      Écart interquartile = Q3 − Q1
+    </div>
+
+    <div class="example">
+      <strong>Exemple :</strong>
+      Si Q1 = 4 et Q3 = 12 :
+
+      <div class="formula">
+        Écart interquartile = 12 − 4 = 8
+      </div>
+
+      L'écart interquartile est de 8.
+    </div>
+
+    <p>
+      Contrairement à l'étendue, l'écart interquartile n'utilise
+      pas les valeurs minimale et maximale. Il se concentre sur
+      la partie centrale de l'ensemble de données.
+    </p>
+
+    <div class="note">
+      <strong>À retenir ♡</strong>
+      Un petit écart interquartile signifie que les 50 % centraux
+      des données sont relativement rapprochés. Un grand écart
+      interquartile indique qu'ils sont davantage dispersés.
+    </div>
+  </section>
+
+  <!-- 6. ÉCART TYPE -->
+  <section class="panel" id="ecart-type">
+    <h2 class="section-title">♡ L'écart type</h2>
+
+    <p>
+      L'écart type est une mesure de dispersion qui indique à quel
+      point les valeurs d'un ensemble de données s'éloignent de la
+      moyenne. Il tient compte de toutes les valeurs de l'ensemble.
+    </p>
+
+    <p>
+      Plus l'écart type est petit, plus les valeurs sont généralement
+      proches de la moyenne. Plus il est grand, plus les valeurs
+      sont dispersées autour de celle-ci.
+    </p>
+
+    <div class="example">
+      <strong>Exemple :</strong>
+      Deux groupes peuvent avoir une moyenne de 10.
+
+      <p><strong>Groupe A :</strong> 9, 10, 10, 10, 11</p>
+      <p><strong>Groupe B :</strong> 2, 6, 10, 14, 18</p>
+
+      Les deux groupes ont une moyenne de 10, mais les valeurs
+      du groupe B sont beaucoup plus dispersées. Son écart type
+      est donc plus élevé que celui du groupe A.
+    </div>
+
+    <div class="note">
+      <strong>À retenir ♡</strong>
+      L'écart type est exprimé dans la même unité que les données.
+      Par exemple, si les données représentent des notes en
+      pourcentage, l'écart type est exprimé en points de pourcentage.
+    </div>
+  </section>
+
+  <!-- 7. CALCUL DE L'ÉCART TYPE -->
+  <section class="panel" id="calcul">
+    <h2 class="section-title">♡ Comment calculer l'écart type ?</h2>
+
+    <p>
+      Pour calculer l'écart type, on mesure les différences entre
+      chaque valeur et la moyenne, puis on utilise ces différences
+      pour déterminer la dispersion globale des données.
+    </p>
+
+    <h3 class="sub-title">Les étapes du calcul 🎀</h3>
+
+    <ol class="steps">
+      <li>
+        <strong>Calculer la moyenne.</strong>
+        Additionne toutes les valeurs, puis divise la somme par
+        le nombre de valeurs.
+      </li>
+
+      <li>
+        <strong>Calculer les écarts à la moyenne.</strong>
+        Soustrais la moyenne de chaque valeur.
+      </li>
+
+      <li>
+        <strong>Élever chaque écart au carré.</strong>
+        Cela permet d'éviter que les écarts positifs et négatifs
+        s'annulent.
+      </li>
+
+      <li>
+        <strong>Calculer la moyenne des écarts au carré.</strong>
+        Additionne les écarts au carré et divise par le nombre
+        de valeurs pour obtenir la variance de la population.
+      </li>
+
+      <li>
+        <strong>Calculer la racine carrée.</strong>
+        La racine carrée de la variance donne l'écart type.
+      </li>
+    </ol>
+
+    <div class="formula">
+      Écart type de la population = √[Σ(x − μ)² / N]
+    </div>
+
+    <p>
+      Dans cette formule :
+    </p>
+
+    <ul>
+      <li><strong>x :</strong> chaque valeur de l'ensemble.</li>
+      <li><strong>μ :</strong> la moyenne de la population.</li>
+      <li><strong>N :</strong> le nombre total de valeurs.</li>
+      <li><strong>Σ :</strong> indique qu'il faut additionner les termes.</li>
+    </ul>
+
+    <div class="example">
+      <strong>Exemple étape par étape :</strong>
+      Prenons les données 2, 4 et 6.
+
+      <p><strong>Étape 1 — Moyenne :</strong></p>
+      <div class="formula">(2 + 4 + 6) ÷ 3 = 4</div>
+
+      <p><strong>Étape 2 — Écarts à la moyenne :</strong></p>
+      <p>2 − 4 = −2 ; 4 − 4 = 0 ; 6 − 4 = 2</p>
+
+      <p><strong>Étape 3 — Écarts au carré :</strong></p>
+      <p>4 ; 0 ; 4</p>
+
+      <p><strong>Étape 4 — Variance :</strong></p>
+      <div class="formula">(4 + 0 + 4) ÷ 3 = 8/3 ≈ 2,67</div>
+
+      <p><strong>Étape 5 — Écart type :</strong></p>
+      <div class="formula">√2,67 ≈ 1,63</div>
+
+      L'écart type de la population est donc d'environ 1,63.
+    </div>
+
+    <div class="note">
+      <strong>Attention !</strong>
+      Si on calcule l'écart type d'un échantillon plutôt que celui
+      d'une population entière, on divise généralement par N − 1
+      au lieu de N pour calculer la variance. En classe, utilise
+      la formule et la calculatrice demandées par ton professeur.
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    Fait avec des maths et beaucoup de rose ♡ 🎀
+    <br>
+    Portfolio numérique · Module 2.3
+  </footer>
+
+</div>
+</body>
+</html>
+```
