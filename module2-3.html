@@ -19,13 +19,9 @@
   --text: #70364f;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -63,9 +59,7 @@ nav a {
   transition: 0.2s;
 }
 
-nav a:hover {
-  background: var(--light-pink);
-}
+nav a:hover { background: var(--light-pink); }
 
 header {
   padding: 38px 22px;
@@ -76,9 +70,7 @@ header {
   border-radius: 25px;
 }
 
-.bow {
-  font-size: 38px;
-}
+.bow { font-size: 38px; }
 
 .eyebrow {
   color: #b75c83;
@@ -98,9 +90,7 @@ h1 {
   line-height: 1.25;
 }
 
-header p {
-  margin-bottom: 0;
-}
+header p { margin-bottom: 0; }
 
 .panel {
   padding: 26px;
@@ -125,9 +115,7 @@ header p {
   font-size: 20px;
 }
 
-.intro {
-  background: #fffafd;
-}
+.intro { background: #fffafd; }
 
 .concept-grid {
   display: grid;
@@ -149,13 +137,9 @@ header p {
   font-size: 20px;
 }
 
-.concept-card p {
-  margin: 8px 0;
-}
+.concept-card p { margin: 8px 0; }
 
-.card-icon {
-  font-size: 28px;
-}
+.card-icon { font-size: 28px; }
 
 .formula {
   padding: 12px;
@@ -176,9 +160,7 @@ header p {
   border-radius: 10px;
 }
 
-.example strong {
-  color: var(--dark-pink);
-}
+.example strong { color: var(--dark-pink); }
 
 .note {
   padding: 15px 18px;
@@ -188,13 +170,9 @@ header p {
   border-radius: 14px;
 }
 
-.note strong {
-  color: var(--dark-pink);
-}
+.note strong { color: var(--dark-pink); }
 
-.steps {
-  padding-left: 24px;
-}
+.steps { padding-left: 24px; }
 
 .steps li {
   margin-bottom: 12px;
@@ -220,6 +198,35 @@ header p {
   font-weight: 700;
 }
 
+.resource-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  background: var(--pale-pink);
+  border: 1px solid #f3c0d5;
+  border-radius: 18px;
+}
+
+.resource-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.resource-content { flex: 1; }
+
+.resource-content strong {
+  display: block;
+  color: var(--dark-pink);
+}
+
+.resource-content p {
+  margin: 4px 0 0;
+  font-size: 13px;
+}
+
 .btn {
   display: inline-block;
   padding: 10px 18px;
@@ -228,6 +235,7 @@ header p {
   border: 1px solid #f0a7c5;
   border-radius: 25px;
   text-decoration: none;
+  text-align: center;
   font-size: 13px;
   font-weight: 700;
   transition: 0.2s;
@@ -238,6 +246,17 @@ header p {
   transform: translateY(-2px);
 }
 
+.source-list {
+  padding-left: 22px;
+}
+
+.source-list li { margin-bottom: 15px; }
+
+.source-list a {
+  color: var(--dark-pink);
+  overflow-wrap: anywhere;
+}
+
 footer {
   padding: 22px 10px 5px;
   color: #bd7896;
@@ -246,21 +265,17 @@ footer {
 }
 
 @media (max-width: 650px) {
-  body {
-    padding: 18px 12px;
-  }
+  body { padding: 18px 12px; }
 
-  .concept-grid {
-    grid-template-columns: 1fr;
-  }
+  .concept-grid { grid-template-columns: 1fr; }
 
-  .panel {
-    padding: 20px;
-  }
+  .panel { padding: 20px; }
 
-  nav a {
-    padding: 6px 9px;
-  }
+  nav a { padding: 6px 9px; }
+
+  .resource-content { flex-basis: calc(100% - 55px); }
+
+  .resource-card .btn { width: 100%; }
 }
 </style>
 </head>
@@ -277,6 +292,8 @@ footer {
     <a href="#interquartile">Écart interquartile</a>
     <a href="#ecart-type">Écart type</a>
     <a href="#calcul">Calcul</a>
+    <a href="#exercices">Exercices</a>
+    <a href="#sources">Sources</a>
   </nav>
 
   <!-- TITRE -->
@@ -284,44 +301,42 @@ footer {
     <div class="bow">🎀</div>
     <div class="eyebrow">PORTFOLIO NUMÉRIQUE · MODULE 2.3</div>
     <h1>Les mesures de dispersion</h1>
-    <p>Comprendre la répartition des données, une étape à la fois ♡</p>
+    <p>Comprendre les données, une étape à la fois ♡</p>
   </header>
 
-  <!-- 1. MESURES DE DISPERSION -->
+  <!-- 1. LES MESURES DE DISPERSION -->
   <section class="panel intro" id="dispersion">
     <h2 class="section-title">♡ Les mesures de dispersion</h2>
 
     <p>
-      Les mesures de dispersion servent à comprendre à quel point
-      les données d'un ensemble sont réparties ou éloignées les unes
-      des autres. Elles permettent de voir si les valeurs sont
-      regroupées près de la moyenne ou si elles sont très dispersées.
+      Les mesures de dispersion servent à voir à quel point les
+      données sont éloignées les unes des autres. Elles nous aident
+      à comprendre si les valeurs sont proches ou très différentes.
     </p>
 
     <p>
-      Contrairement aux mesures de tendance centrale, qui indiquent
-      une valeur représentative d'un ensemble, les mesures de
-      dispersion décrivent la variabilité des données.
+      Par exemple, deux classes peuvent avoir la même moyenne à un
+      examen, mais des résultats différents. Dans une classe, les
+      notes peuvent être très proches. Dans l'autre, elles peuvent
+      être beaucoup plus variées. Les mesures de dispersion nous
+      aident à voir cette différence.
     </p>
 
-    <div class="example">
-      <strong>Exemple :</strong>
-      Deux classes peuvent avoir la même moyenne à un test, mais
-      des résultats différents. Dans une classe, les notes peuvent
-      être très proches les unes des autres. Dans l'autre, certaines
-      notes peuvent être beaucoup plus élevées ou plus faibles.
-      Les mesures de dispersion permettent de comparer ces situations.
+    <div class="note">
+      <strong>À retenir ♡</strong>
+      La moyenne nous donne une idée du centre des données, tandis
+      que la dispersion nous indique à quel point les données sont
+      réparties autour de ce centre.
     </div>
   </section>
 
-  <!-- 2. MÉTHODES DE MESURE -->
+  <!-- 2. LES MÉTHODES -->
   <section class="panel" id="methodes">
     <h2 class="section-title">♡ Les méthodes de mesure de dispersion</h2>
 
     <p>
-      Il existe plusieurs façons de mesurer la dispersion des données.
-      Les principales méthodes étudiées dans ce module sont l'étendue,
-      les quartiles, l'écart interquartile et l'écart type.
+      Il existe plusieurs méthodes pour mesurer la dispersion.
+      Voici les quatre notions principales de cette leçon.
     </p>
 
     <div class="concept-grid">
@@ -329,53 +344,42 @@ footer {
       <div class="concept-card">
         <div class="card-icon">📏</div>
         <h3>L'étendue</h3>
-        <p>
-          Mesure la différence entre la plus grande et la plus petite
-          valeur d'un ensemble.
-        </p>
-        <a class="btn" href="#etendue">En savoir plus ↓</a>
+        <p>La différence entre la plus grande et la plus petite valeur.</p>
+        <a class="btn" href="#etendue">Voir la définition ↓</a>
       </div>
 
       <div class="concept-card">
         <div class="card-icon">🎀</div>
         <h3>Les quartiles</h3>
-        <p>
-          Divisent les données ordonnées en quatre parties contenant
-          approximativement le même nombre de valeurs.
-        </p>
-        <a class="btn" href="#quartiles">En savoir plus ↓</a>
+        <p>Des valeurs qui divisent les données ordonnées en quatre parties.</p>
+        <a class="btn" href="#quartiles">Voir la définition ↓</a>
       </div>
 
       <div class="concept-card">
         <div class="card-icon">📊</div>
         <h3>L'écart interquartile</h3>
-        <p>
-          Mesure la dispersion des 50 % centraux des données.
-        </p>
-        <a class="btn" href="#interquartile">En savoir plus ↓</a>
+        <p>La dispersion des 50 % centraux des données.</p>
+        <a class="btn" href="#interquartile">Voir la définition ↓</a>
       </div>
 
       <div class="concept-card">
         <div class="card-icon">💗</div>
         <h3>L'écart type</h3>
-        <p>
-          Mesure à quel point les valeurs s'éloignent généralement
-          de la moyenne.
-        </p>
-        <a class="btn" href="#ecart-type">En savoir plus ↓</a>
+        <p>À quel point les valeurs s'éloignent généralement de la moyenne.</p>
+        <a class="btn" href="#ecart-type">Voir la définition ↓</a>
       </div>
 
     </div>
   </section>
 
-  <!-- 3. ÉTENDUE -->
+  <!-- 3. L'ÉTENDUE -->
   <section class="panel" id="etendue">
     <h2 class="section-title">♡ L'étendue</h2>
 
     <p>
-      L'étendue est la différence entre la valeur maximale et la
-      valeur minimale d'un ensemble de données. Elle donne une idée
-      de l'écart total entre les deux valeurs extrêmes.
+      L'étendue est la différence entre la plus grande valeur et
+      la plus petite valeur d'un ensemble de données. Elle donne
+      une idée de l'écart total entre les deux extrêmes.
     </p>
 
     <div class="formula">
@@ -384,33 +388,28 @@ footer {
 
     <div class="example">
       <strong>Exemple :</strong>
-      Voici un ensemble de résultats :
+      Voici cinq résultats :
       <div class="data">
-        <span>4</span>
-        <span>6</span>
-        <span>7</span>
-        <span>9</span>
-        <span>12</span>
+        <span>3</span><span>5</span><span>7</span><span>9</span><span>12</span>
       </div>
 
-      La valeur maximale est 12 et la valeur minimale est 4.
+      La plus grande valeur est 12 et la plus petite est 3.
 
       <div class="formula">
-        Étendue = 12 − 4 = 8
+        Étendue = 12 − 3 = 9
       </div>
 
-      L'étendue est donc de 8.
+      L'étendue est donc de 9.
     </div>
 
     <div class="note">
       <strong>À retenir ♡</strong>
-      Une grande étendue indique que les valeurs extrêmes sont
-      éloignées l'une de l'autre. Cependant, elle ne décrit pas
-      la répartition de toutes les valeurs entre ces deux extrêmes.
+      L'étendue est facile à calculer, mais elle ne tient compte
+      que de la plus petite et de la plus grande valeur.
     </div>
   </section>
 
-  <!-- 4. QUARTILES -->
+  <!-- 4. LES QUARTILES -->
   <section class="panel" id="quartiles">
     <h2 class="section-title">♡ Les quartiles</h2>
 
@@ -422,33 +421,25 @@ footer {
 
     <ul class="steps">
       <li>
-        <strong>Premier quartile (Q1) :</strong>
-        correspond à la médiane de la moitié inférieure des données.
-        Environ 25 % des données se trouvent à cette valeur ou en dessous.
+        <strong>Q1 — Premier quartile :</strong>
+        environ 25 % des données se trouvent à cette valeur ou en dessous.
       </li>
       <li>
-        <strong>Deuxième quartile (Q2) :</strong>
-        correspond à la médiane de l'ensemble des données. Il sépare
-        les données en deux moitiés.
+        <strong>Q2 — Deuxième quartile :</strong>
+        c'est la médiane. Elle sépare les données en deux moitiés.
       </li>
       <li>
-        <strong>Troisième quartile (Q3) :</strong>
-        correspond à la médiane de la moitié supérieure des données.
-        Environ 75 % des données se trouvent à cette valeur ou en dessous.
+        <strong>Q3 — Troisième quartile :</strong>
+        environ 75 % des données se trouvent à cette valeur ou en dessous.
       </li>
     </ul>
 
     <div class="example">
       <strong>Exemple :</strong>
-      Considérons les données ordonnées suivantes :
+      Prenons les données en ordre croissant :
       <div class="data">
-        <span>2</span>
-        <span>4</span>
-        <span>6</span>
-        <span>8</span>
-        <span>10</span>
-        <span>12</span>
-        <span>14</span>
+        <span>2</span><span>4</span><span>6</span><span>8</span>
+        <span>10</span><span>12</span><span>14</span>
       </div>
 
       Pour cet exemple :
@@ -458,16 +449,14 @@ footer {
         <li>Q3 = 12</li>
       </ul>
 
-      La médiane est 8. La moitié inférieure est 2, 4, 6 et la
-      moitié supérieure est 10, 12, 14.
+      La médiane est 8. Elle sépare les données en deux moitiés.
     </div>
 
     <div class="note">
-      <strong>Important :</strong>
-      Les méthodes de calcul des quartiles peuvent varier selon
-      la convention utilisée en classe, particulièrement lorsque
-      le nombre de données est pair. Il faut suivre la méthode
-      enseignée par ton professeur.
+      <strong>Petit rappel :</strong>
+      Il faut toujours placer les données en ordre croissant avant
+      de trouver les quartiles. La méthode utilisée peut varier
+      selon les consignes du cours.
     </div>
   </section>
 
@@ -476,9 +465,9 @@ footer {
     <h2 class="section-title">♡ L'écart interquartile</h2>
 
     <p>
-      L'écart interquartile représente la différence entre le
-      troisième quartile et le premier quartile. Il mesure la
-      dispersion des 50 % centraux des données.
+      L'écart interquartile mesure la dispersion des 50 % centraux
+      des données. Pour le calculer, on soustrait le premier quartile
+      du troisième quartile.
     </p>
 
     <div class="formula">
@@ -493,20 +482,20 @@ footer {
         Écart interquartile = 12 − 4 = 8
       </div>
 
-      L'écart interquartile est de 8.
+      L'écart interquartile est donc de 8.
     </div>
 
     <p>
-      Contrairement à l'étendue, l'écart interquartile n'utilise
-      pas les valeurs minimale et maximale. Il se concentre sur
-      la partie centrale de l'ensemble de données.
+      Cette mesure est utile parce qu'elle se concentre sur le milieu
+      des données. Contrairement à l'étendue, elle est moins influencée
+      par les valeurs très grandes ou très petites.
     </p>
 
     <div class="note">
       <strong>À retenir ♡</strong>
-      Un petit écart interquartile signifie que les 50 % centraux
-      des données sont relativement rapprochés. Un grand écart
-      interquartile indique qu'ils sont davantage dispersés.
+      Un petit écart interquartile signifie que les valeurs du milieu
+      sont proches les unes des autres. Un grand écart indique qu'elles
+      sont plus dispersées.
     </div>
   </section>
 
@@ -515,97 +504,61 @@ footer {
     <h2 class="section-title">♡ L'écart type</h2>
 
     <p>
-      L'écart type est une mesure de dispersion qui indique à quel
-      point les valeurs d'un ensemble de données s'éloignent de la
-      moyenne. Il tient compte de toutes les valeurs de l'ensemble.
+      L'écart type mesure à quel point les valeurs sont éloignées
+      de la moyenne. Il prend en compte toutes les valeurs de
+      l'ensemble de données.
     </p>
 
-    <p>
-      Plus l'écart type est petit, plus les valeurs sont généralement
-      proches de la moyenne. Plus il est grand, plus les valeurs
-      sont dispersées autour de celle-ci.
-    </p>
+    <ul>
+      <li>Un petit écart type signifie que les valeurs sont généralement proches de la moyenne.</li>
+      <li>Un grand écart type signifie que les valeurs sont plus éloignées de la moyenne.</li>
+    </ul>
 
     <div class="example">
       <strong>Exemple :</strong>
-      Deux groupes peuvent avoir une moyenne de 10.
 
       <p><strong>Groupe A :</strong> 9, 10, 10, 10, 11</p>
       <p><strong>Groupe B :</strong> 2, 6, 10, 14, 18</p>
 
       Les deux groupes ont une moyenne de 10, mais les valeurs
-      du groupe B sont beaucoup plus dispersées. Son écart type
-      est donc plus élevé que celui du groupe A.
+      du groupe B sont plus éloignées de la moyenne. Son écart
+      type est donc plus grand.
     </div>
 
     <div class="note">
       <strong>À retenir ♡</strong>
-      L'écart type est exprimé dans la même unité que les données.
-      Par exemple, si les données représentent des notes en
-      pourcentage, l'écart type est exprimé en points de pourcentage.
+      L'écart type permet de comprendre si les données sont
+      regroupées autour de la moyenne ou plus dispersées.
     </div>
   </section>
 
-  <!-- 7. CALCUL DE L'ÉCART TYPE -->
+  <!-- 7. CALCULER L'ÉCART TYPE -->
   <section class="panel" id="calcul">
     <h2 class="section-title">♡ Comment calculer l'écart type ?</h2>
 
     <p>
-      Pour calculer l'écart type, on mesure les différences entre
-      chaque valeur et la moyenne, puis on utilise ces différences
-      pour déterminer la dispersion globale des données.
+      Pour calculer l'écart type d'une population, il faut trouver
+      la moyenne, mesurer les écarts entre chaque valeur et la moyenne,
+      puis utiliser ces écarts pour calculer le résultat final.
     </p>
 
     <h3 class="sub-title">Les étapes du calcul 🎀</h3>
 
     <ol class="steps">
-      <li>
-        <strong>Calculer la moyenne.</strong>
-        Additionne toutes les valeurs, puis divise la somme par
-        le nombre de valeurs.
-      </li>
-
-      <li>
-        <strong>Calculer les écarts à la moyenne.</strong>
-        Soustrais la moyenne de chaque valeur.
-      </li>
-
-      <li>
-        <strong>Élever chaque écart au carré.</strong>
-        Cela permet d'éviter que les écarts positifs et négatifs
-        s'annulent.
-      </li>
-
-      <li>
-        <strong>Calculer la moyenne des écarts au carré.</strong>
-        Additionne les écarts au carré et divise par le nombre
-        de valeurs pour obtenir la variance de la population.
-      </li>
-
-      <li>
-        <strong>Calculer la racine carrée.</strong>
-        La racine carrée de la variance donne l'écart type.
-      </li>
+      <li><strong>Calculer la moyenne :</strong> additionner les valeurs et diviser par leur nombre.</li>
+      <li><strong>Trouver les écarts :</strong> soustraire la moyenne de chaque valeur.</li>
+      <li><strong>Élever les écarts au carré :</strong> multiplier chaque écart par lui-même.</li>
+      <li><strong>Calculer la variance :</strong> additionner les écarts au carré et diviser par le nombre de valeurs.</li>
+      <li><strong>Trouver l'écart type :</strong> calculer la racine carrée de la variance.</li>
     </ol>
 
     <div class="formula">
-      Écart type de la population = √[Σ(x − μ)² / N]
+      Écart type = √[somme des écarts au carré ÷ nombre de valeurs]
     </div>
-
-    <p>
-      Dans cette formule :
-    </p>
-
-    <ul>
-      <li><strong>x :</strong> chaque valeur de l'ensemble.</li>
-      <li><strong>μ :</strong> la moyenne de la population.</li>
-      <li><strong>N :</strong> le nombre total de valeurs.</li>
-      <li><strong>Σ :</strong> indique qu'il faut additionner les termes.</li>
-    </ul>
 
     <div class="example">
       <strong>Exemple étape par étape :</strong>
-      Prenons les données 2, 4 et 6.
+      Utilisons les données 2, 4 et 6.
 
       <p><strong>Étape 1 — Moyenne :</strong></p>
       <div class="formula">(2 + 4 + 6) ÷ 3 = 4</div>
@@ -617,20 +570,101 @@ footer {
       <p>4 ; 0 ; 4</p>
 
       <p><strong>Étape 4 — Variance :</strong></p>
-      <div class="formula">(4 + 0 + 4) ÷ 3 = 8/3 ≈ 2,67</div>
+      <div class="formula">(4 + 0 + 4) ÷ 3 = 2,67</div>
 
       <p><strong>Étape 5 — Écart type :</strong></p>
       <div class="formula">√2,67 ≈ 1,63</div>
 
-      L'écart type de la population est donc d'environ 1,63.
+      L'écart type est donc d'environ 1,63.
     </div>
 
     <div class="note">
-      <strong>Attention !</strong>
-      Si on calcule l'écart type d'un échantillon plutôt que celui
-      d'une population entière, on divise généralement par N − 1
-      au lieu de N pour calculer la variance. En classe, utilise
-      la formule et la calculatrice demandées par ton professeur.
+      <strong>Important :</strong>
+      Cet exemple utilise la formule pour une population entière.
+      Si on travaille avec un échantillon, le calcul peut être
+      différent. En classe, suis la méthode demandée par ton enseignant.
+    </div>
+  </section>
+
+  <!-- 8. EXERCICES GOOGLE DOCS -->
+  <section class="panel" id="exercices">
+    <h2 class="section-title">♡ Exercices 2.3 — Google Docs</h2>
+
+    <p>
+      Maintenant que tu as revu les notions importantes, ouvre le
+      document pour accéder aux exercices et mettre tes connaissances
+      en pratique. 📚
+    </p>
+
+    <div class="resource-card">
+      <div class="resource-icon">📄</div>
+
+      <div class="resource-content">
+        <strong>Mes exercices 2.3</strong>
+        <p>Consulter les questions et compléter les exercices.</p>
+      </div>
+
+      <a
+        class="btn"
+        href="https://docs.google.com/document/d/10Zmcj6bB2eVPOG-ljRIx_wn98MuoGxZvXGeS4ZbY8GU/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ouvrir Google Docs ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- 9. SOURCES -->
+  <section class="panel" id="sources">
+    <h2 class="section-title">♡ Sources</h2>
+
+    <p>
+      Voici les sources utilisées pour comprendre les mesures
+      de dispersion et vérifier les définitions et les formules.
+    </p>
+
+    <ol class="source-list">
+      <li>
+        <strong>Statistique Canada — Mesures de la dispersion</strong><br>
+        Une explication générale de l'étendue, de l'écart interquartile,
+        de la variance et de l'écart type.<br>
+        <a
+          href="https://www150.statcan.gc.ca/n1/edu/power-pouvoir/ch12/5214876-fra.htm"
+          target="_blank"
+          rel="noopener noreferrer">
+          Consulter la source ↗
+        </a>
+      </li>
+
+      <li>
+        <strong>Statistique Canada — Calculer l'étendue et l'écart interquartile</strong><br>
+        Définitions des quartiles et exemples de calcul de l'étendue
+        et de l'écart interquartile.<br>
+        <a
+          href="https://www150.statcan.gc.ca/n1/edu/power-pouvoir/ch12/5214890-fra.htm"
+          target="_blank"
+          rel="noopener noreferrer">
+          Consulter la source ↗
+        </a>
+      </li>
+
+      <li>
+        <strong>Statistique Canada — Calculer la variance et l'écart type</strong><br>
+        Explications et exemple pour calculer la variance et l'écart type.<br>
+        <a
+          href="https://www150.statcan.gc.ca/n1/edu/power-pouvoir/ch12/5214891-fra.htm"
+          target="_blank"
+          rel="noopener noreferrer">
+          Consulter la source ↗
+        </a>
+      </li>
+    </ol>
+
+    <div class="note">
+      <strong>♡ Petit rappel :</strong>
+      Les exemples numériques de cette page servent à expliquer
+      les notions avec des nombres simples. Les définitions et les
+      méthodes ont été vérifiées à l'aide des sources ci-dessus.
     </div>
   </section>
 
