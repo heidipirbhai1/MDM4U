@@ -1,195 +1,178 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2.4 ♡</title>
 
 <style>
-  :root {
-    --pink: #e8a1bd;
-    --dark-pink: #bd668b;
-    --light-pink: #fff0f6;
-    --pale-pink: #fff9fc;
-    --border: #f2c8da;
-    --text: #765367;
-    --white: #ffffff;
-  }
-
-  * {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-
-  body {
+body {
+    background: #fff5f9;
+    color: #604354;
+    font-family: "Trebuchet MS", sans-serif;
     margin: 0;
-    background: var(--pale-pink);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    line-height: 1.8;
-  }
+    padding: 30px 15px;
+    line-height: 1.7;
+}
 
-  header {
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+header, section {
+    background: white;
+    border: 1px solid #f3c5da;
+    border-radius: 22px;
+    padding: 28px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 18px #e9a9c522;
+}
+
+header {
     text-align: center;
-    padding: 75px 20px 65px;
-    background: linear-gradient(180deg, #ffeaf3, #fff7fb);
-    border-bottom: 1px solid var(--border);
-  }
+    padding: 45px 20px;
+    border: 2px solid #edb3ce;
+}
 
-  .module-label {
-    color: var(--dark-pink);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 11px;
-    font-weight: 700;
-  }
+h1 {
+    color: #bd5e8c;
+    font-size: 42px;
+    margin: 10px 0;
+}
 
-  h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-  }
+h2 {
+    color: #bd5e8c;
+    border-bottom: 1px solid #f3d3e2;
+    padding-bottom: 8px;
+}
 
-  h1 {
-    color: var(--dark-pink);
-    font-size: clamp(36px, 6vw, 54px);
-    margin: 15px 0;
-  }
+h3 { color: #cf7da2; }
 
-  header p {
-    max-width: 600px;
-    margin: 0 auto;
-    color: var(--text);
-  }
+.subtitle { color: #a68a99; }
 
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-  }
+.heart {
+    color: #e88ab5;
+    font-size: 22px;
+}
 
-  nav a {
-    text-decoration: none;
-    color: var(--dark-pink);
-    background: #fff4f8;
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    padding: 8px 16px;
-    font-size: 12px;
-    transition: 0.2s ease;
-  }
-
-  nav a:hover {
-    background: var(--pink);
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-
-  section {
-    background: var(--white);
-    border: 1px solid #f6dce7;
-    border-radius: 24px;
-    padding: 32px;
-    margin-bottom: 28px;
-    box-shadow: 0 8px 25px rgba(189, 102, 139, 0.07);
-  }
-
-  h2 {
-    color: var(--dark-pink);
-    font-size: 27px;
-    margin-top: 0;
-  }
-
-  h3 {
-    color: var(--dark-pink);
-    font-size: 20px;
-  }
-
-  .pink-note {
-    background: #fff2f7;
-    border-left: 3px solid var(--pink);
-    padding: 17px 20px;
-    border-radius: 5px 16px 16px 5px;
-    margin: 22px 0;
-  }
-
-  .image-container {
-    text-align: center;
-    margin: 25px 0;
-    padding: 20px;
-    background: #fff9fc;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-  }
-
-  .image-container img {
-    display: block;
-    width: 100%;
-    max-width: 650px;
+img {
+    max-width: 100%;
     height: auto;
-    margin: 0 auto;
-    border-radius: 12px;
-  }
+    border-radius: 14px;
+}
 
-  .caption {
-    font-size: 12px;
-    color: #a17c90;
-    margin-top: 12px;
-  }
-
-  a {
-    color: var(--dark-pink);
-  }
-
-  .work-box {
-    background: #fff9fc;
-    border: 1px dashed #e8b3cb;
-    border-radius: 18px;
-    padding: 22px;
-    margin-top: 20px;
-  }
-
-  .button {
-    display: inline-block;
-    background: #e8a1bd;
-    color: white;
-    padding: 11px 20px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    margin-top: 8px;
-    transition: 0.2s ease;
-  }
-
-  .button:hover {
-    background: #bd668b;
-    transform: translateY(-2px);
-  }
-
-  .placeholder {
-    color: #a17c90;
-    font-style: italic;
-  }
-
-  footer {
+.image-box {
+    background: #fff5f9;
+    border: 1px dashed #e8a1c0;
+    border-radius: 16px;
+    padding: 18px;
     text-align: center;
-    padding: 35px 20px;
-    font-size: 12px;
-    color: #a17c90;
-    background: #fff0f6;
-    border-top: 1px solid var(--border);
-  }
+}
 
-  @media (max-width: 600px) {
-    section {
-      padding: 23px;
-    }
+a { color: #bd5e8c; }
 
-    header {
-      padding: 50px 20px;
-    }
-  }
+.button {
+    display: inline-block;
+    background: #d77fa5;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    margin: 5px;
+}
+
+.button:hover { background: #bd5e8c; }
+
+.placeholder {
+    background: #fff5f9;
+    border: 1px dashed #e8a1c0;
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    color: #a68a99;
+}
+
+footer {
+    text-align: center;
+    color: #a68a99;
+    padding: 15px;
+}
 </style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <p class="heart">୨୧ ───────── ♡ ───────── ୨୧</p>
+    <p class="subtitle">PORTFOLIO NUMÉRIQUE · MATHÉMATIQUES</p>
+    <h1>Module 2.4 ♡</h1>
+    <p>La distribution normale</p>
+    <p class="heart">✿ ✿ ✿</p>
+</header>
+
+<section>
+    <h2>♡ 1. Image d'une distribution normale</h2>
+    <p>Une distribution normale est représentée par une courbe en forme de cloche, symétrique autour de la moyenne.</p>
+
+    <div class="image-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg"
+             alt="Courbe représentant une distribution normale">
+        <p>
+            <small>
+                Source :
+                <a href="https://commons.wikimedia.org/wiki/File:Normal_Distribution_PDF.svg" target="_blank">
+                    Wikimedia Commons
+                </a>
+            </small>
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>♡ 2. Exercices 2.4 — Partie 1</h2>
+    <p>Voici mes réponses aux exercices de la partie 1.</p>
+
+    <h3>Mes réponses</h3>
+    <p>[Ajoute tes réponses ici.]</p>
+
+    <div class="placeholder">
+        ♡ Ajoute tes captures d'écran de Desmos ou Google Sheets ici.
+    </div>
+
+    <p><strong>Lien vers mon travail :</strong> [Ajoute ton lien ici.]</p>
+
+    <a class="button" href="https://www.desmos.com/calculator" target="_blank">Desmos ↗</a>
+    <a class="button" href="https://sheets.google.com" target="_blank">Google Sheets ↗</a>
+</section>
+
+<section>
+    <h2>♡ 3. Travail fait à la main</h2>
+    <p>Cette section présente mes réponses réalisées sur papier-crayon.</p>
+
+    <div class="placeholder">
+        ♡ Insère ici une photo ou une numérisation de ton travail.
+    </div>
+
+    <p><strong>Lien vers mon travail numérisé :</strong> [Ajoute ton lien ici.]</p>
+</section>
+
+<section>
+    <h2>♡ 4. Vérification finale</h2>
+    <p>♡ Image de la distribution normale et source incluses.</p>
+    <p>♡ Réponses aux exercices de la partie 1 ajoutées.</p>
+    <p>♡ Captures d'écran ou liens vers Desmos/Sheets inclus.</p>
+    <p>♡ Travail fait à la main numérisé et lié.</p>
+</section>
+
+<footer>
+    <p>Made with love ♡ · Module 2.4</p>
+    <p class="heart">୨୧ ───────── ✿ ───────── ୨୧</p>
+</footer>
+
+</div>
+</body>
+</html>
+```
