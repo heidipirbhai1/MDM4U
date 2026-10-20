@@ -1,103 +1,171 @@
-```html
+Module 2.4
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 2.4 ♡</title>
+<title>Module 2.4 ♡ Portfolio</title>
 
 <style>
+:root {
+    --pink: #e9a1c2;
+    --dark-pink: #bd5e8c;
+    --light-pink: #fff1f7;
+    --pale-pink: #fff9fc;
+    --text: #604354;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background: #fff5f9;
-    color: #604354;
-    font-family: "Trebuchet MS", sans-serif;
     margin: 0;
     padding: 30px 15px;
+    background: linear-gradient(135deg, #fff0f6, #fffafd, #fce8f1);
+    color: var(--text);
+    font-family: "Trebuchet MS", Arial, sans-serif;
     line-height: 1.7;
 }
 
 .container {
-    max-width: 850px;
+    max-width: 900px;
     margin: auto;
 }
 
 header, section {
     background: white;
-    border: 1px solid #f3c5da;
-    border-radius: 22px;
+    border: 1px solid #f1c6da;
+    border-radius: 24px;
     padding: 28px;
-    margin-bottom: 22px;
-    box-shadow: 0 5px 18px #e9a9c522;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 20px rgba(189, 94, 140, 0.08);
 }
 
 header {
     text-align: center;
     padding: 45px 20px;
-    border: 2px solid #edb3ce;
+    border: 2px solid var(--pink);
+}
+
+.small-title {
+    color: var(--dark-pink);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 12px;
 }
 
 h1 {
-    color: #bd5e8c;
-    font-size: 42px;
-    margin: 10px 0;
+    color: var(--dark-pink);
+    font-size: clamp(32px, 6vw, 46px);
+    margin: 12px 0;
 }
 
 h2 {
-    color: #bd5e8c;
-    border-bottom: 1px solid #f3d3e2;
-    padding-bottom: 8px;
+    color: var(--dark-pink);
+    border-bottom: 2px solid #f8dce8;
+    padding-bottom: 10px;
 }
 
-h3 { color: #cf7da2; }
+h3 {
+    color: #c979a0;
+    margin-bottom: 8px;
+}
 
-.subtitle { color: #a68a99; }
-
-.heart {
-    color: #e88ab5;
+.decoration {
+    color: var(--pink);
     font-size: 22px;
+    letter-spacing: 5px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 14px;
+.subtitle {
+    color: #a68a99;
 }
 
-.image-box {
-    background: #fff5f9;
-    border: 1px dashed #e8a1c0;
+.doc-card {
+    background: var(--pale-pink);
+    border: 1px solid #f3d6e4;
     border-radius: 16px;
-    padding: 18px;
-    text-align: center;
+    padding: 20px;
+    margin: 16px 0;
 }
 
-a { color: #bd5e8c; }
+.doc-number {
+    display: inline-block;
+    background: #f9dce9;
+    color: #a74d79;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
 
 .button {
     display: inline-block;
-    background: #d77fa5;
+    background: var(--dark-pink);
     color: white;
     text-decoration: none;
     padding: 10px 18px;
     border-radius: 25px;
-    margin: 5px;
+    margin-top: 8px;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
-.button:hover { background: #bd5e8c; }
+.button:hover {
+    background: #9f416e;
+    transform: translateY(-2px);
+}
 
-.placeholder {
-    background: #fff5f9;
-    border: 1px dashed #e8a1c0;
-    border-radius: 14px;
+.video-box {
+    background: var(--light-pink);
+    border-radius: 18px;
     padding: 18px;
-    text-align: center;
-    color: #a68a99;
+    margin-top: 18px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 14px;
+    margin-top: 15px;
+    background: #f8dce8;
+}
+
+.video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.note {
+    background: #fff1f7;
+    border-left: 4px solid var(--pink);
+    padding: 14px 18px;
+    border-radius: 10px;
 }
 
 footer {
     text-align: center;
     color: #a68a99;
     padding: 15px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 18px 10px;
+    }
+
+    header, section {
+        padding: 22px 18px;
+    }
 }
 </style>
 </head>
@@ -105,71 +173,151 @@ footer {
 <body>
 <div class="container">
 
+<!-- PAGE TITLE -->
 <header>
-    <p class="heart">୨୧ ───────── ♡ ───────── ୨୧</p>
-    <p class="subtitle">PORTFOLIO NUMÉRIQUE · MATHÉMATIQUES</p>
-    <h1>Module 2.4 ♡</h1>
-    <p>La distribution normale</p>
-    <p class="heart">✿ ✿ ✿</p>
+    <p class="decoration">୨୧ ♡ ୨୧</p>
+    <p class="small-title">Portfolio numérique · Mathématiques</p>
+    <h1>Module 2.4</h1>
+    <p class="subtitle">La distribution normale & l'écart réduit</p>
+    <p class="decoration">✿ ♡ ✿</p>
 </header>
 
+<!-- SECTION 2.4A -->
 <section>
-    <h2>♡ 1. Image d'une distribution normale</h2>
-    <p>Une distribution normale est représentée par une courbe en forme de cloche, symétrique autour de la moyenne.</p>
+    <h2>♡ 2.4A — Partie 1 et Partie 2</h2>
 
-    <div class="image-box">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Normal_Distribution_PDF.svg"
-             alt="Courbe représentant une distribution normale">
+    <p>
+        Cette section rassemble les documents et les exercices
+        de la partie 2.4A.
+    </p>
+
+    <!-- DOCUMENT 1 -->
+    <div class="doc-card">
+        <span class="doc-number">DOCUMENT 01</span>
+        <h3>2.4A — Document 1</h3>
         <p>
-            <small>
-                Source :
-                <a href="https://commons.wikimedia.org/wiki/File:Normal_Distribution_PDF.svg" target="_blank">
-                    Wikimedia Commons
-                </a>
-            </small>
+            Consulte le premier document pour accéder au travail
+            et aux exercices correspondants.
+        </p>
+        <a class="button"
+           href="https://docs.google.com/document/d/1wjs3daMdxigiON2Un3pzILT9WXeGCRzhhlzl20BKvWk/edit?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+           Ouvrir le document ↗
+        </a>
+    </div>
+
+    <!-- DOCUMENT 2 -->
+    <div class="doc-card">
+        <span class="doc-number">DOCUMENT 02</span>
+        <h3>2.4A — Document 2</h3>
+        <p>
+            Accède au deuxième document contenant les ressources
+            et le travail de cette section.
+        </p>
+        <a class="button"
+           href="https://docs.google.com/document/d/1Mubcl5qycUSDQrIcV2PYueukHQTe3r_3QF25-tSVOEk/edit?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+           Ouvrir le document ↗
+        </a>
+    </div>
+
+    <!-- DOCUMENT 3 -->
+    <div class="doc-card">
+        <span class="doc-number">DOCUMENT 03</span>
+        <h3>2.4A — Document 3</h3>
+        <p>
+            Consulte le troisième document pour compléter
+            cette partie du module.
+        </p>
+        <a class="button"
+           href="https://docs.google.com/document/d/1KSz6w-n0LezbkWVSqFUcpwaMK4wHzqxEnkRa3j7ITGA/edit?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+           Ouvrir le document ↗
+        </a>
+    </div>
+
+    <p class="note">
+        ♡ <strong>À vérifier :</strong> assure-toi d'avoir terminé
+        les parties 1 et 2 et d'avoir inclus les réponses ou les
+        preuves de travail demandées par ton enseignante.
+    </p>
+</section>
+
+<!-- SECTION 2.4B -->
+<section>
+    <h2>♡ 2.4B — L'écart réduit</h2>
+
+    <p>
+        Cette section contient le document de travail ainsi qu'une
+        vidéo explicative pour mieux comprendre l'écart réduit.
+    </p>
+
+    <!-- DOCUMENT -->
+    <div class="doc-card">
+        <span class="doc-number">DOCUMENT 01</span>
+        <h3>2.4B — Document de travail</h3>
+        <p>
+            Clique ci-dessous pour consulter le document associé
+            à la partie 2.4B.
+        </p>
+        <a class="button"
+           href="https://docs.google.com/document/d/1wjs3daMdxigiON2Un3pzILT9WXeGCRzhhlzl20BKvWk/edit?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+           Ouvrir le document ↗
+        </a>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="video-box">
+        <h3>♡ Vidéo explicative : l'écart réduit</h3>
+
+        <p>
+            Regarde cette vidéo pour comprendre le concept de
+            l'écart réduit et réviser la matière du module.
+        </p>
+
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/CUgfm5El8ok"
+                title="Vidéo explicative sur l'écart réduit"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <p>
+            <a class="button"
+               href="https://www.youtube.com/watch?v=CUgfm5El8ok"
+               target="_blank" rel="noopener noreferrer">
+               Regarder sur YouTube ↗
+            </a>
         </p>
     </div>
+
+    <p class="note">
+        ♡ <strong>Petit rappel :</strong> prends des notes pendant
+        la vidéo et complète les exercices demandés dans le document.
+    </p>
 </section>
 
+<!-- FINAL CHECKLIST -->
 <section>
-    <h2>♡ 2. Exercices 2.4 — Partie 1</h2>
-    <p>Voici mes réponses aux exercices de la partie 1.</p>
+    <h2>♡ Ma liste de vérification</h2>
 
-    <h3>Mes réponses</h3>
-    <p>[Ajoute tes réponses ici.]</p>
-
-    <div class="placeholder">
-        ♡ Ajoute tes captures d'écran de Desmos ou Google Sheets ici.
-    </div>
-
-    <p><strong>Lien vers mon travail :</strong> [Ajoute ton lien ici.]</p>
-
-    <a class="button" href="https://www.desmos.com/calculator" target="_blank">Desmos ↗</a>
-    <a class="button" href="https://sheets.google.com" target="_blank">Google Sheets ↗</a>
-</section>
-
-<section>
-    <h2>♡ 3. Travail fait à la main</h2>
-    <p>Cette section présente mes réponses réalisées sur papier-crayon.</p>
-
-    <div class="placeholder">
-        ♡ Insère ici une photo ou une numérisation de ton travail.
-    </div>
-
-    <p><strong>Lien vers mon travail numérisé :</strong> [Ajoute ton lien ici.]</p>
-</section>
-
-<section>
-    <h2>♡ 4. Vérification finale</h2>
-    <p>♡ Image de la distribution normale et source incluses.</p>
-    <p>♡ Réponses aux exercices de la partie 1 ajoutées.</p>
-    <p>♡ Captures d'écran ou liens vers Desmos/Sheets inclus.</p>
-    <p>♡ Travail fait à la main numérisé et lié.</p>
+    <p>☐ J'ai consulté les trois documents de la partie 2.4A.</p>
+    <p>☐ J'ai terminé les parties 1 et 2 de 2.4A.</p>
+    <p>☐ J'ai consulté le document de la partie 2.4B.</p>
+    <p>☐ J'ai regardé la vidéo sur l'écart réduit.</p>
+    <p>☐ J'ai complété les exercices demandés.</p>
+    <p>☐ J'ai ajouté les réponses et les preuves de travail nécessaires.</p>
 </section>
 
 <footer>
-    <p>Made with love ♡ · Module 2.4</p>
-    <p class="heart">୨୧ ───────── ✿ ───────── ୨୧</p>
+    <p class="decoration">୨୧ ♡ ୨୧</p>
+    Fait avec soin · Module 2.4
+    <p>✿ Une étape à la fois ✿</p>
 </footer>
 
 </div>
