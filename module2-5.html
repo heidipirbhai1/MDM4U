@@ -1,0 +1,403 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2.5 | Corrélation et droite la mieux ajustée</title>
+
+    <style>
+        :root {
+            --pink: #e86fa8;
+            --dark-pink: #b83d79;
+            --light-pink: #fff0f7;
+            --lavender: #f4efff;
+            --cream: #fffafd;
+            --text: #493847;
+            --muted: #796779;
+            --border: #f3c9dd;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 8% 5%, #ffe1ef, transparent 25rem),
+                radial-gradient(circle at 95% 25%, #eee5ff, transparent 27rem),
+                var(--cream);
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+
+        .hero {
+            padding: 4rem 1.3rem 3.5rem;
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                #ffe2ef,
+                #f5eaff 60%,
+                #fff7fb
+            );
+            border-bottom: 2px solid var(--border);
+        }
+
+        .badge {
+            display: inline-block;
+            background: white;
+            color: var(--dark-pink);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 0.04em;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.35rem);
+            line-height: 1.15;
+            margin: 1rem auto 0.8rem;
+            color: var(--dark-pink);
+            max-width: 850px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #6f5a6d;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: rgba(255, 250, 252, 0.95);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-pink);
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: var(--light-pink);
+        }
+
+        /* MAIN CONTENT */
+
+        main {
+            width: min(1000px, 92%);
+            margin: 2rem auto 4rem;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: clamp(1.2rem, 3vw, 2rem);
+            margin: 1.5rem 0;
+            box-shadow: 0 12px 35px rgba(190, 92, 143, 0.08);
+        }
+
+        h2 {
+            color: var(--dark-pink);
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #a64d83;
+            margin-bottom: 0.35rem;
+        }
+
+        .section-kicker {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75rem;
+            color: var(--pink);
+            font-weight: bold;
+        }
+
+        .callout {
+            padding: 1rem 1.15rem;
+            border-left: 4px solid var(--pink);
+            background: var(--light-pink);
+            border-radius: 0 14px 14px 0;
+            margin: 1rem 0;
+        }
+
+        /* VIDEO */
+
+        .video-wrap {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #f6e8f0;
+            box-shadow: 0 8px 24px rgba(105, 48, 83, 0.12);
+            margin: 1.2rem 0;
+        }
+
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* FORMULAS AND CARDS */
+
+        .formula {
+            display: block;
+            text-align: center;
+            font-size: 1.35rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #fff0f7, #f4efff);
+            border: 1px dashed #e6a6c7;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: var(--dark-pink);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+            gap: 1rem;
+        }
+
+        .mini-card {
+            background: #fff9fc;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 1rem;
+        }
+
+        .mini-card strong {
+            color: var(--dark-pink);
+        }
+
+        ol.steps {
+            padding-left: 1.4rem;
+        }
+
+        ol.steps li {
+            padding: 0.25rem 0 0.25rem 0.25rem;
+        }
+
+        /* GRAPH PLACEHOLDERS */
+
+        .graph-slot {
+            min-height: 150px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            border: 2px dashed #e8a9c9;
+            border-radius: 16px;
+            background: repeating-linear-gradient(
+                135deg,
+                #fff9fc,
+                #fff9fc 12px,
+                #fff3f9 12px,
+                #fff3f9 24px
+            );
+            padding: 1rem;
+            color: var(--muted);
+        }
+
+        .graph-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 1rem auto;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .answer-line {
+            background: #fffafd;
+            border: 1px solid #f1d3e2;
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            margin: 0.65rem 0;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            background: var(--lavender);
+            color: #7358a3;
+            font-size: 0.82rem;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--dark-pink);
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            nav {
+                position: static;
+            }
+
+            section {
+                border-radius: 18px;
+            }
+        }
+
+        @media print {
+            nav {
+                position: static;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="hero">
+        <span class="badge">
+            ✿ PORTFOLIO NUMÉRIQUE · MATHÉMATIQUES
+        </span>
+
+        <h1>
+            Module 2.5<br>
+            La droite la mieux ajustée<br>
+            et la corrélation
+        </h1>
+
+        <p>
+            Un petit guide rose pour comprendre les nuages de points,
+            trouver une droite de tendance et interpréter le coefficient
+            de corrélation. ♡
+        </p>
+    </header>
+
+    <!-- NAVIGATION -->
+
+    <nav aria-label="Navigation du module">
+        <a href="#objectif">Objectif</a>
+        <a href="#video">Vidéo et méthode</a>
+        <a href="#graphiques">Mes graphiques</a>
+        <a href="#correlation">Corrélation</a>
+    </nav>
+
+    <main>
+
+        <!-- SECTION 1 -->
+
+        <section id="objectif">
+
+            <div class="section-kicker">01 · À retenir</div>
+
+            <h2>
+                Qu'est-ce qu'une droite la mieux ajustée ? ✧
+            </h2>
+
+            <p>
+                Une droite la mieux ajustée est une droite qui représente
+                la tendance générale d'un nuage de points. Elle permet
+                d'observer la relation linéaire entre deux variables
+                et peut servir à faire des estimations.
+            </p>
+
+            <div class="formula">
+                y = mx + b
+            </div>
+
+            <div class="grid">
+
+                <div class="mini-card">
+                    <strong>m — La pente</strong>
+                    <p>
+                        Indique le sens et le rythme du changement.
+                        Une pente positive monte, tandis qu'une pente
+                        négative descend.
+                    </p>
+                </div>
+
+                <div class="mini-card">
+                    <strong>b — L'ordonnée à l'origine</strong>
+                    <p>
+                        Indique la valeur de y lorsque x est égal à zéro.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="callout">
+                <strong>Petit rappel :</strong>
+                une corrélation décrit une relation entre des variables,
+                mais ne prouve pas que l'une cause l'autre.
+            </div>
+
+        </section>
+
+        <!-- SECTION 2 : VIDEO -->
+
+        <section id="video">
+
+            <div class="section-kicker">02 · Tutoriel</div>
+
+            <h2>
+                Vidéo : trouver l'équation avec Google Sheets 🎀
+            </h2>
+
+            <p>
+                Cette vidéo explique comment créer un nuage de points,
+                ajouter une droite de tendance et afficher son équation
+                à l'aide de Google
