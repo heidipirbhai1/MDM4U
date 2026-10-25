@@ -1,403 +1,560 @@
-```html
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 2.5 | Corrélation et droite la mieux ajustée</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2-5 | La droite la mieux ajustée</title>
 
-    <style>
-        :root {
-            --pink: #e86fa8;
-            --dark-pink: #b83d79;
-            --light-pink: #fff0f7;
-            --lavender: #f4efff;
-            --cream: #fffafd;
-            --text: #493847;
-            --muted: #796779;
-            --border: #f3c9dd;
-            --white: #ffffff;
-        }
+<style>
+:root {
+  --pink: #f4b6d9;
+  --rose: #d96ca8;
+  --purple: #9873c9;
+  --lavender: #f2eaff;
+  --light-pink: #fff1f8;
+  --white: #ffffff;
+  --text: #49374e;
+  --muted: #796980;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #fff3fa, #f3edff);
+  color: var(--text);
+  line-height: 1.7;
+}
 
-        body {
-            margin: 0;
-            font-family: "Trebuchet MS", Arial, sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 8% 5%, #ffe1ef, transparent 25rem),
-                radial-gradient(circle at 95% 25%, #eee5ff, transparent 27rem),
-                var(--cream);
-            line-height: 1.7;
-        }
+header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f7c1df, #ded0ff);
+  border-radius: 0 0 35px 35px;
+}
 
-        /* HEADER */
+header h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 10px 0;
+  color: #593c66;
+}
 
-        .hero {
-            padding: 4rem 1.3rem 3.5rem;
-            text-align: center;
-            background: linear-gradient(
-                135deg,
-                #ffe2ef,
-                #f5eaff 60%,
-                #fff7fb
-            );
-            border-bottom: 2px solid var(--border);
-        }
+header p {
+  max-width: 700px;
+  margin: auto;
+}
 
-        .badge {
-            display: inline-block;
-            background: white;
-            color: var(--dark-pink);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 0.35rem 0.9rem;
-            font-size: 0.85rem;
-            font-weight: bold;
-            letter-spacing: 0.04em;
-        }
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px;
+  background: #fff9fd;
+  border-bottom: 1px solid #f0dced;
+}
 
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.35rem);
-            line-height: 1.15;
-            margin: 1rem auto 0.8rem;
-            color: var(--dark-pink);
-            max-width: 850px;
-        }
+nav a {
+  text-decoration: none;
+  color: #774b86;
+  background: #f3e5fa;
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
 
-        .hero p {
-            max-width: 700px;
-            margin: 0 auto;
-            color: #6f5a6d;
-        }
+nav a:hover {
+  background: #ecc7e4;
+}
 
-        /* NAVIGATION */
+main {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 18px 40px;
+}
 
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.65rem;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 5;
-            background: rgba(255, 250, 252, 0.95);
-            border-bottom: 1px solid var(--border);
-        }
+section {
+  background: white;
+  padding: 30px;
+  margin: 25px 0;
+  border-radius: 25px;
+  border: 1px solid #f1dced;
+  box-shadow: 0 8px 25px rgba(140, 90, 140, 0.08);
+}
 
-        nav a {
-            text-decoration: none;
-            color: var(--dark-pink);
-            font-weight: bold;
-            font-size: 0.9rem;
-            padding: 0.45rem 0.8rem;
-            border-radius: 999px;
-            transition: 0.2s;
-        }
+h2 {
+  color: #92538e;
+  margin-top: 0;
+}
 
-        nav a:hover {
-            background: var(--light-pink);
-        }
+h3 {
+  color: #79539b;
+}
 
-        /* MAIN CONTENT */
+.tag {
+  color: #c15b9a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
 
-        main {
-            width: min(1000px, 92%);
-            margin: 2rem auto 4rem;
-        }
+.formula {
+  background: var(--lavender);
+  border: 1px dashed #c9ace9;
+  border-radius: 15px;
+  padding: 18px;
+  text-align: center;
+  color: #704e94;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
 
-        section {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: clamp(1.2rem, 3vw, 2rem);
-            margin: 1.5rem 0;
-            box-shadow: 0 12px 35px rgba(190, 92, 143, 0.08);
-        }
+.note {
+  background: var(--light-pink);
+  border-left: 5px solid var(--rose);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 18px 0;
+}
 
-        h2 {
-            color: var(--dark-pink);
-            font-size: clamp(1.45rem, 3vw, 2rem);
-            margin-top: 0;
-        }
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  margin: 20px 0;
+  background: var(--lavender);
+}
 
-        h3 {
-            color: #a64d83;
-            margin-bottom: 0.35rem;
-        }
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
-        .section-kicker {
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 0.75rem;
-            color: var(--pink);
-            font-weight: bold;
-        }
+a {
+  color: #a44d98;
+}
 
-        .callout {
-            padding: 1rem 1.15rem;
-            border-left: 4px solid var(--pink);
-            background: var(--light-pink);
-            border-radius: 0 14px 14px 0;
-            margin: 1rem 0;
-        }
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fffaff;
+  border-radius: 18px;
+  margin: 20px 0;
+}
 
-        /* VIDEO */
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
 
-        .video-wrap {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            overflow: hidden;
-            border-radius: 18px;
-            background: #f6e8f0;
-            box-shadow: 0 8px 24px rgba(105, 48, 83, 0.12);
-            margin: 1.2rem 0;
-        }
+.result-card {
+  background: #fff2f9;
+  border: 1px solid #f0d7e9;
+  padding: 18px;
+  border-radius: 16px;
+}
 
-        .video-wrap iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+.result-card small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
 
-        /* FORMULAS AND CARDS */
+.result-card strong {
+  color: #88518f;
+  font-size: 1.1rem;
+}
 
-        .formula {
-            display: block;
-            text-align: center;
-            font-size: 1.35rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, #fff0f7, #f4efff);
-            border: 1px dashed #e6a6c7;
-            border-radius: 16px;
-            padding: 1rem;
-            margin: 1rem 0;
-            color: var(--dark-pink);
-        }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(220px, 1fr)
-            );
-            gap: 1rem;
-        }
+th, td {
+  padding: 11px;
+  text-align: center;
+  border-bottom: 1px solid #f0e2ef;
+}
 
-        .mini-card {
-            background: #fff9fc;
-            border: 1px solid var(--border);
-            border-radius: 17px;
-            padding: 1rem;
-        }
+th {
+  background: #f3e8fa;
+  color: #68496f;
+}
 
-        .mini-card strong {
-            color: var(--dark-pink);
-        }
+.placeholder {
+  background: #fcf8ff;
+  border: 2px dashed #d8bee9;
+  border-radius: 18px;
+  text-align: center;
+  padding: 28px;
+  color: #796681;
+}
 
-        ol.steps {
-            padding-left: 1.4rem;
-        }
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+}
 
-        ol.steps li {
-            padding: 0.25rem 0 0.25rem 0.25rem;
-        }
+@media (max-width: 600px) {
+  section {
+    padding: 20px;
+  }
 
-        /* GRAPH PLACEHOLDERS */
-
-        .graph-slot {
-            min-height: 150px;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            border: 2px dashed #e8a9c9;
-            border-radius: 16px;
-            background: repeating-linear-gradient(
-                135deg,
-                #fff9fc,
-                #fff9fc 12px,
-                #fff3f9 12px,
-                #fff3f9 24px
-            );
-            padding: 1rem;
-            color: var(--muted);
-        }
-
-        .graph-image {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 1rem auto;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-        }
-
-        .answer-line {
-            background: #fffafd;
-            border: 1px solid #f1d3e2;
-            border-radius: 12px;
-            padding: 0.8rem 1rem;
-            margin: 0.65rem 0;
-        }
-
-        .pill {
-            display: inline-block;
-            padding: 0.15rem 0.6rem;
-            border-radius: 999px;
-            background: var(--lavender);
-            color: #7358a3;
-            font-size: 0.82rem;
-            font-weight: bold;
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            color: var(--muted);
-            padding: 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        a {
-            color: var(--dark-pink);
-        }
-
-        @media (max-width: 600px) {
-            .hero {
-                padding: 3rem 1rem;
-            }
-
-            nav {
-                position: static;
-            }
-
-            section {
-                border-radius: 18px;
-            }
-        }
-
-        @media print {
-            nav {
-                position: static;
-            }
-
-            body {
-                background: white;
-            }
-
-            section {
-                box-shadow: none;
-                break-inside: avoid;
-            }
-        }
-    </style>
+  nav {
+    position: static;
+  }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+<header>
+  <p>PORTFOLIO NUMÉRIQUE · MATHÉMATIQUES</p>
+  <h1>♡ Module 2-5 ♡</h1>
+  <h2>La droite la mieux ajustée</h2>
+  <p>
+    Explorer les nuages de points, déterminer une droite de régression
+    et interpréter la force et la direction d'une corrélation.
+  </p>
+</header>
 
-    <header class="hero">
-        <span class="badge">
-            ✿ PORTFOLIO NUMÉRIQUE · MATHÉMATIQUES
-        </span>
+<nav>
+  <a href="#notions">Les notions</a>
+  <a href="#video">Vidéo tutorielle</a>
+  <a href="#graphique1">Graphique 1</a>
+  <a href="#graphique2">Graphique 2</a>
+  <a href="#graphique3">Graphique 3</a>
+  <a href="#correlation">Corrélation</a>
+</nav>
 
-        <h1>
-            Module 2.5<br>
-            La droite la mieux ajustée<br>
-            et la corrélation
-        </h1>
+<main>
 
-        <p>
-            Un petit guide rose pour comprendre les nuages de points,
-            trouver une droite de tendance et interpréter le coefficient
-            de corrélation. ♡
-        </p>
-    </header>
+<!-- SECTION 1 : NOTIONS -->
 
-    <!-- NAVIGATION -->
+<section id="notions">
+  <p class="tag">01 · Les notions</p>
+  <h2>Qu'est-ce qu'une droite la mieux ajustée ?</h2>
 
-    <nav aria-label="Navigation du module">
-        <a href="#objectif">Objectif</a>
-        <a href="#video">Vidéo et méthode</a>
-        <a href="#graphiques">Mes graphiques</a>
-        <a href="#correlation">Corrélation</a>
-    </nav>
+  <p>
+    Une droite la mieux ajustée, aussi appelée droite de régression
+    linéaire, représente la tendance générale d'un ensemble de données.
+    Elle permet d'estimer la relation entre deux variables.
+  </p>
 
-    <main>
+  <div class="formula">
+    y = mx + b
+  </div>
 
-        <!-- SECTION 1 -->
+  <ul>
+    <li><strong>x :</strong> la variable indépendante, placée sur l'axe horizontal.</li>
+    <li><strong>y :</strong> la variable dépendante, placée sur l'axe vertical.</li>
+    <li><strong>m :</strong> la pente de la droite.</li>
+    <li><strong>b :</strong> l'ordonnée à l'origine.</li>
+  </ul>
 
-        <section id="objectif">
+  <div class="note">
+    <strong>À retenir :</strong> une droite de régression permet de
+    représenter la tendance générale des données. Le coefficient de
+    corrélation r indique la force et la direction de la relation linéaire.
+  </div>
+</section>
 
-            <div class="section-kicker">01 · À retenir</div>
+<!-- SECTION 2 : VIDEO -->
 
-            <h2>
-                Qu'est-ce qu'une droite la mieux ajustée ? ✧
-            </h2>
+<section id="video">
+  <p class="tag">02 · Apprentissage</p>
+  <h2>Comment tracer une droite la mieux ajustée</h2>
 
-            <p>
-                Une droite la mieux ajustée est une droite qui représente
-                la tendance générale d'un nuage de points. Elle permet
-                d'observer la relation linéaire entre deux variables
-                et peut servir à faire des estimations.
-            </p>
+  <p>
+    Cette vidéo sert de tutoriel pour apprendre à créer un nuage de points
+    et à afficher la droite de tendance ainsi que son équation dans
+    Google Sheets.
+  </p>
 
-            <div class="formula">
-                y = mx + b
-            </div>
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/-ZAetZ6lmBk"
+      title="Tutoriel : droite de tendance dans Google Sheets"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-            <div class="grid">
+  <p>
+    Si la vidéo ne s'affiche pas,
+    <a href="https://www.youtube.com/watch?v=-ZAetZ6lmBk"
+       target="_blank" rel="noopener">
+      clique ici pour la regarder sur YouTube.
+    </a>
+  </p>
 
-                <div class="mini-card">
-                    <strong>m — La pente</strong>
-                    <p>
-                        Indique le sens et le rythme du changement.
-                        Une pente positive monte, tandis qu'une pente
-                        négative descend.
-                    </p>
-                </div>
+  <h3>Étapes dans Google Sheets</h3>
 
-                <div class="mini-card">
-                    <strong>b — L'ordonnée à l'origine</strong>
-                    <p>
-                        Indique la valeur de y lorsque x est égal à zéro.
-                    </p>
-                </div>
+  <ol>
+    <li>Entrer les données de x dans la première colonne et celles de y dans la deuxième.</li>
+    <li>Sélectionner les deux colonnes de données.</li>
+    <li>Cliquer sur <strong>Insertion → Graphique</strong>.</li>
+    <li>Choisir le type de graphique <strong>Nuage de points</strong>.</li>
+    <li>Dans « Personnaliser », ouvrir « Série » et activer la courbe de tendance linéaire.</li>
+    <li>Dans les options de libellé, choisir « Utiliser l'équation » pour afficher l'équation de la droite.</li>
+    <li>Ajouter un titre et des titres aux axes.</li>
+  </ol>
 
-            </div>
+  <div class="note">
+    <strong>Pour intégrer les graphiques dans le portfolio :</strong>
+    <a href="https://youtu.be/PpFxZMAhIk4"
+       target="_blank" rel="noopener">
+      regarder la vidéo de rappel sur l'intégration des graphiques.
+    </a>
+  </div>
+</section>
 
-            <div class="callout">
-                <strong>Petit rappel :</strong>
-                une corrélation décrit une relation entre des variables,
-                mais ne prouve pas que l'une cause l'autre.
-            </div>
+<!-- SECTION 3 : GRAPHIQUE 1 -->
 
-        </section>
+<section id="graphique1">
+  <p class="tag">03 · Exercice 2.5</p>
 
-        <!-- SECTION 2 : VIDEO -->
+  <h2>Graphique 1 — La quantité d'essence sans plomb vendue selon le prix</h2>
 
-        <section id="video">
+  <p>
+    <strong>Variable indépendante (x) :</strong> prix de l'essence en cents/litre.
+    <br>
+    <strong>Variable dépendante (y) :</strong> quantité vendue en L/h.
+  </p>
 
-            <div class="section-kicker">02 · Tutoriel</div>
+  <svg class="chart" viewBox="0 0 760 430"
+       role="img"
+       aria-label="Nuage de points du prix de l'essence et de la quantité vendue avec droite de régression">
 
-            <h2>
-                Vidéo : trouver l'équation avec Google Sheets 🎀
-            </h2>
+    <defs>
+      <style>
+        .grid { stroke: #eadce9; stroke-width: 1; }
+        .tick { fill: #755b73; font: 13px Arial, sans-serif; }
+        .axis { stroke: #7f647d; stroke-width: 1.7; }
+        .point { fill: #ec75b5; stroke: white; stroke-width: 2; }
+        .trend { stroke: #8a5cc4; stroke-width: 3.5; }
+        .axislabel { fill: #63475f; font: 15px Arial, sans-serif; font-weight: bold; }
+      </style>
+    </defs>
 
-            <p>
-                Cette vidéo explique comment créer un nuage de points,
-                ajouter une droite de tendance et afficher son équation
-                à l'aide de Google
+    <!-- Grille verticale -->
+    <line x1="120" y1="35" x2="120" y2="350" class="grid"/>
+    <line x1="230" y1="35" x2="230" y2="350" class="grid"/>
+    <line x1="340" y1="35" x2="340" y2="350" class="grid"/>
+    <line x1="450" y1="35" x2="450" y2="350" class="grid"/>
+    <line x1="560" y1="35" x2="560" y2="350" class="grid"/>
+    <line x1="670" y1="35" x2="670" y2="350" class="grid"/>
+
+    <!-- Grille horizontale -->
+    <line x1="90" y1="35" x2="700" y2="35" class="grid"/>
+    <line x1="90" y1="87" x2="700" y2="87" class="grid"/>
+    <line x1="90" y1="140" x2="700" y2="140" class="grid"/>
+    <line x1="90" y1="192" x2="700" y2="192" class="grid"/>
+    <line x1="90" y1="245" x2="700" y2="245" class="grid"/>
+    <line x1="90" y1="297" x2="700" y2="297" class="grid"/>
+    <line x1="90" y1="350" x2="700" y2="350" class="grid"/>
+
+    <!-- Axes -->
+    <line x1="90" y1="35" x2="90" y2="350" class="axis"/>
+    <line x1="90" y1="350" x2="700" y2="350" class="axis"/>
+
+    <!-- Étiquettes x -->
+    <text x="120" y="373" text-anchor="middle" class="tick">54</text>
+    <text x="230" y="373" text-anchor="middle" class="tick">56</text>
+    <text x="340" y="373" text-anchor="middle" class="tick">58</text>
+    <text x="450" y="373" text-anchor="middle" class="tick">60</text>
+    <text x="560" y="373" text-anchor="middle" class="tick">62</text>
+
+    <!-- Étiquettes y -->
+    <text x="78" y="355" text-anchor="end" class="tick">70</text>
+    <text x="78" y="302" text-anchor="end" class="tick">90</text>
+    <text x="78" y="250" text-anchor="end" class="tick">110</text>
+    <text x="78" y="197" text-anchor="end" class="tick">130</text>
+    <text x="78" y="145" text-anchor="end" class="tick">150</text>
+    <text x="78" y="92" text-anchor="end" class="tick">170</text>
+    <text x="78" y="40" text-anchor="end" class="tick">190</text>
+
+    <!-- Droite de régression approximative y = -13.157x + 904.514 -->
+    <line x1="120" y1="78" x2="670" y2="319" class="trend"/>
+
+    <!-- Points de données -->
+    <circle cx="147" cy="45" r="6" class="point"><title>(54.5, 186)</title></circle>
+    <circle cx="175" cy="66" r="6" class="point"><title>(55, 178)</title></circle>
+    <circle cx="224" cy="82" r="6" class="point"><title>(55.9, 172)</title></circle>
+    <circle cx="246" cy="140" r="6" class="point"><title>(56.3, 150)</title></circle>
+    <circle cx="361" cy="70" r="6" class="point"><title>(58.4, 177)</title></circle>
+    <circle cx="405" cy="240" r="6" class="point"><title>(59.2, 112)</title></circle>
+    <circle cx="460" cy="266" r="6" class="point"><title>(60.2, 102)</title></circle>
+    <circle cx="575" cy="316" r="6" class="point"><title>(62.3, 83)</title></circle>
+
+    <text x="395" y="415" text-anchor="middle" class="axislabel">
+      Prix (cents/litre)
+    </text>
+
+    <text transform="translate(23 192) rotate(-90)"
+          text-anchor="middle" class="axislabel">
+      Quantité vendue (L/h)
+    </text>
+  </svg>
+
+  <div class="results">
+    <div class="result-card">
+      <small>Équation de la droite</small>
+      <strong>y ≈ −13,157x + 904,514</strong>
+    </div>
+
+    <div class="result-card">
+      <small>Coefficient de corrélation</small>
+      <strong>r ≈ −0,899</strong>
+    </div>
+
+    <div class="result-card">
+      <small>Direction et force</small>
+      <strong>Forte et négative</strong>
+    </div>
+  </div>
+
+  <h3>Interprétation</h3>
+
+  <p>
+    On observe une forte corrélation négative entre le prix de l'essence
+    et la quantité vendue. En général, lorsque le prix de l'essence augmente,
+    la quantité vendue diminue. Le coefficient de corrélation
+    r ≈ −0,899 confirme cette relation linéaire négative forte.
+  </p>
+
+  <h3>Données utilisées</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prix (cents/litre)</th>
+        <th>Quantité vendue (L/h)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>54,5</td><td>186</td></tr>
+      <tr><td>55,0</td><td>178</td></tr>
+      <tr><td>55,9</td><td>172</td></tr>
+      <tr><td>56,3</td><td>150</td></tr>
+      <tr><td>58,4</td><td>177</td></tr>
+      <tr><td>59,2</td><td>112</td></tr>
+      <tr><td>60,2</td><td>102</td></tr>
+      <tr><td>62,3</td><td>83</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SECTION 4 : GRAPHIQUE 2 -->
+
+<section id="graphique2">
+  <p class="tag">04 · Exercice 2.5</p>
+
+  <h2>Graphique 2 — À compléter</h2>
+
+  <div class="placeholder">
+    <h3>♡ Graphique 2 ♡</h3>
+
+    <p>
+      Ajoute ici le deuxième ensemble de données de l'exercice 2.5.
+      Le graphique doit inclure un nuage de points, une droite de régression,
+      son équation et le coefficient de corrélation r.
+    </p>
+
+    <p><strong>Équation :</strong> à calculer</p>
+    <p><strong>Coefficient r :</strong> à calculer</p>
+    <p><strong>Force et direction :</strong> à interpréter</p>
+  </div>
+</section>
+
+<!-- SECTION 5 : GRAPHIQUE 3 -->
+
+<section id="graphique3">
+  <p class="tag">05 · Exercice 2.5</p>
+
+  <h2>Graphique 3 — À compléter</h2>
+
+  <div class="placeholder">
+    <h3>♡ Graphique 3 ♡</h3>
+
+    <p>
+      Ajoute ici le troisième ensemble de données de l'exercice 2.5.
+      Le graphique doit inclure un nuage de points, une droite de régression,
+      son équation et le coefficient de corrélation r.
+    </p>
+
+    <p><strong>Équation :</strong> à calculer</p>
+    <p><strong>Coefficient r :</strong> à calculer</p>
+    <p><strong>Force et direction :</strong> à interpréter</p>
+  </div>
+</section>
+
+<!-- SECTION 6 : CORRELATION -->
+
+<section id="correlation">
+  <p class="tag">06 · Analyse</p>
+
+  <h2>Comment interpréter le coefficient de corrélation r</h2>
+
+  <p>
+    Le coefficient de corrélation linéaire r varie entre −1 et +1.
+    Son signe indique la direction de la relation et sa valeur absolue
+    aide à déterminer sa force.
+  </p>
+
+  <div class="results">
+    <div class="result-card">
+      <small>r proche de +1</small>
+      <strong>Corrélation positive forte</strong>
+      <p>Les deux variables ont tendance à augmenter ensemble.</p>
+    </div>
+
+    <div class="result-card">
+      <small>r proche de 0</small>
+      <strong>Corrélation linéaire faible</strong>
+      <p>Il y a peu ou pas de relation linéaire évidente.</p>
+    </div>
+
+    <div class="result-card">
+      <small>r proche de −1</small>
+      <strong>Corrélation négative forte</strong>
+      <p>Quand une variable augmente, l'autre tend à diminuer.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Attention :</strong> les catégories « faible », « modérée »
+    et « forte » sont approximatives. Il faut aussi examiner la forme
+    du nuage de points et tenir compte du contexte.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Portfolio numérique · Module 2-5 ♡
+</footer>
+
+</body>
+</html>
