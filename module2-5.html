@@ -1,560 +1,225 @@
-
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 2-5 | La droite la mieux ajustée</title>
+
+<title>Module 2.5 | Portfolio de mathématiques</title>
 
 <style>
-:root {
-  --pink: #f4b6d9;
-  --rose: #d96ca8;
-  --purple: #9873c9;
-  --lavender: #f2eaff;
-  --light-pink: #fff1f8;
-  --white: #ffffff;
-  --text: #49374e;
-  --muted: #796980;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-* {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #fff4f8, #f1eaff);
+        color: #51435c;
+        line-height: 1.7;
+    }
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #fff3fa, #f3edff);
-  color: var(--text);
-  line-height: 1.7;
-}
+    header {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #f8cfe0, #ded2ff);
+        border-bottom: 3px solid #e8b5d0;
+    }
 
-header {
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #f7c1df, #ded0ff);
-  border-radius: 0 0 35px 35px;
-}
+    header h1 {
+        color: #765184;
+        font-size: 2.5rem;
+        margin: 0 0 10px;
+    }
 
-header h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  margin: 10px 0;
-  color: #593c66;
-}
+    header p {
+        margin: 0;
+        font-size: 1.1rem;
+    }
 
-header p {
-  max-width: 700px;
-  margin: auto;
-}
+    main {
+        max-width: 900px;
+        margin: 45px auto;
+        padding: 0 20px;
+    }
 
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 18px;
-  background: #fff9fd;
-  border-bottom: 1px solid #f0dced;
-}
+    section {
+        background: #ffffff;
+        padding: 35px;
+        margin-bottom: 30px;
+        border-radius: 22px;
+        border: 1px solid #f0d8e8;
+        box-shadow: 0 8px 25px rgba(140, 100, 155, 0.10);
+    }
 
-nav a {
-  text-decoration: none;
-  color: #774b86;
-  background: #f3e5fa;
-  padding: 8px 15px;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
+    h2 {
+        color: #c45f91;
+        margin-top: 0;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #eee3ff;
+    }
 
-nav a:hover {
-  background: #ecc7e4;
-}
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 15px;
+        margin: 25px 0;
+        background: #fbedf5;
+    }
 
-main {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 0 18px 40px;
-}
+    .video-container iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
 
-section {
-  background: white;
-  padding: 30px;
-  margin: 25px 0;
-  border-radius: 25px;
-  border: 1px solid #f1dced;
-  box-shadow: 0 8px 25px rgba(140, 90, 140, 0.08);
-}
+    .button {
+        display: inline-block;
+        background: #df91b7;
+        color: white;
+        text-decoration: none;
+        padding: 13px 23px;
+        border-radius: 30px;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: background 0.2s ease;
+    }
 
-h2 {
-  color: #92538e;
-  margin-top: 0;
-}
+    .button:hover {
+        background: #bf6794;
+    }
 
-h3 {
-  color: #79539b;
-}
+    .document-card {
+        text-align: center;
+        padding: 30px 20px;
+        background: #fff7fb;
+        border: 2px dashed #e5b4d0;
+        border-radius: 16px;
+        margin-top: 20px;
+    }
 
-.tag {
-  color: #c15b9a;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
+    .document-icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
 
-.formula {
-  background: var(--lavender);
-  border: 1px dashed #c9ace9;
-  border-radius: 15px;
-  padding: 18px;
-  text-align: center;
-  color: #704e94;
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 20px 0;
-}
+    footer {
+        text-align: center;
+        padding: 25px;
+        background: #f3e8f8;
+        color: #80688b;
+        margin-top: 50px;
+    }
 
-.note {
-  background: var(--light-pink);
-  border-left: 5px solid var(--rose);
-  border-radius: 12px;
-  padding: 15px;
-  margin: 18px 0;
-}
+    @media (max-width: 600px) {
+        header h1 {
+            font-size: 1.9rem;
+        }
 
-.video-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: 18px;
-  margin: 20px 0;
-  background: var(--lavender);
-}
-
-.video-container iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-a {
-  color: #a44d98;
-}
-
-.chart {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fffaff;
-  border-radius: 18px;
-  margin: 20px 0;
-}
-
-.results {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.result-card {
-  background: #fff2f9;
-  border: 1px solid #f0d7e9;
-  padding: 18px;
-  border-radius: 16px;
-}
-
-.result-card small {
-  display: block;
-  color: var(--muted);
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-.result-card strong {
-  color: #88518f;
-  font-size: 1.1rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 18px 0;
-}
-
-th, td {
-  padding: 11px;
-  text-align: center;
-  border-bottom: 1px solid #f0e2ef;
-}
-
-th {
-  background: #f3e8fa;
-  color: #68496f;
-}
-
-.placeholder {
-  background: #fcf8ff;
-  border: 2px dashed #d8bee9;
-  border-radius: 18px;
-  text-align: center;
-  padding: 28px;
-  color: #796681;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  color: var(--muted);
-}
-
-@media (max-width: 600px) {
-  section {
-    padding: 20px;
-  }
-
-  nav {
-    position: static;
-  }
-}
+        section {
+            padding: 22px;
+        }
+    }
 </style>
 </head>
 
 <body>
 
 <header>
-  <p>PORTFOLIO NUMÉRIQUE · MATHÉMATIQUES</p>
-  <h1>♡ Module 2-5 ♡</h1>
-  <h2>La droite la mieux ajustée</h2>
-  <p>
-    Explorer les nuages de points, déterminer une droite de régression
-    et interpréter la force et la direction d'une corrélation.
-  </p>
+    <h1>🌸 Portfolio de mathématiques 🌸</h1>
+    <p>Module 2.5 — Droites de meilleure ajustement et corrélation</p>
 </header>
-
-<nav>
-  <a href="#notions">Les notions</a>
-  <a href="#video">Vidéo tutorielle</a>
-  <a href="#graphique1">Graphique 1</a>
-  <a href="#graphique2">Graphique 2</a>
-  <a href="#graphique3">Graphique 3</a>
-  <a href="#correlation">Corrélation</a>
-</nav>
 
 <main>
 
-<!-- SECTION 1 : NOTIONS -->
+    <!-- SECTION 1 : VIDÉO -->
 
-<section id="notions">
-  <p class="tag">01 · Les notions</p>
-  <h2>Qu'est-ce qu'une droite la mieux ajustée ?</h2>
+    <section id="video">
+        <h2>🎀 1. Tutoriel vidéo — Google Sheets</h2>
 
-  <p>
-    Une droite la mieux ajustée, aussi appelée droite de régression
-    linéaire, représente la tendance générale d'un ensemble de données.
-    Elle permet d'estimer la relation entre deux variables.
-  </p>
+        <p>
+            Cette vidéo présente comment créer un graphique dans Google Sheets
+            et trouver l'équation de la droite de meilleure ajustement.
+            Elle permet de mieux comprendre comment analyser les données
+            et interpréter une corrélation.
+        </p>
 
-  <div class="formula">
-    y = mx + b
-  </div>
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/b3uEMZCcGiA?si=Q6xcl2vBzwG5thHZ"
+                title="Tutoriel Google Sheets : droite de meilleure ajustement"
+                allow="accelerometer; autoplay; clipboard-write;
+                encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
 
-  <ul>
-    <li><strong>x :</strong> la variable indépendante, placée sur l'axe horizontal.</li>
-    <li><strong>y :</strong> la variable dépendante, placée sur l'axe vertical.</li>
-    <li><strong>m :</strong> la pente de la droite.</li>
-    <li><strong>b :</strong> l'ordonnée à l'origine.</li>
-  </ul>
+        <p>
+            Pour revoir comment intégrer les graphiques dans le portfolio,
+            consulte également la vidéo de rappel fournie dans les consignes.
+        </p>
 
-  <div class="note">
-    <strong>À retenir :</strong> une droite de régression permet de
-    représenter la tendance générale des données. Le coefficient de
-    corrélation r indique la force et la direction de la relation linéaire.
-  </div>
-</section>
+        <a class="button"
+           href="https://youtu.be/PpFxZMAhIk4"
+           target="_blank"
+           rel="noopener">
+            Voir la vidéo de rappel
+        </a>
+    </section>
 
-<!-- SECTION 2 : VIDEO -->
 
-<section id="video">
-  <p class="tag">02 · Apprentissage</p>
-  <h2>Comment tracer une droite la mieux ajustée</h2>
+    <!-- SECTION 2 : TROIS GRAPHIQUES -->
 
-  <p>
-    Cette vidéo sert de tutoriel pour apprendre à créer un nuage de points
-    et à afficher la droite de tendance ainsi que son équation dans
-    Google Sheets.
-  </p>
+    <section id="graphiques">
+        <h2>💗 2. Les trois graphiques — Exercice 2.5</h2>
 
-  <div class="video-container">
-    <iframe
-      src="https://www.youtube.com/embed/-ZAetZ6lmBk"
-      title="Tutoriel : droite de tendance dans Google Sheets"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
+        <p>
+            Consulte mon document pour voir les trois graphiques avec leurs
+            droites de meilleure ajustement et leurs analyses.
+            Pour chacun, le document présente le coefficient de corrélation
+            <strong>r</strong>, la force de la corrélation, sa direction
+            et une interprétation des résultats.
+        </p>
 
-  <p>
-    Si la vidéo ne s'affiche pas,
-    <a href="https://www.youtube.com/watch?v=-ZAetZ6lmBk"
-       target="_blank" rel="noopener">
-      clique ici pour la regarder sur YouTube.
-    </a>
-  </p>
+        <div class="document-card">
+            <div class="document-icon">📊</div>
 
-  <h3>Étapes dans Google Sheets</h3>
+            <h3>Mes graphiques et analyses</h3>
 
-  <ol>
-    <li>Entrer les données de x dans la première colonne et celles de y dans la deuxième.</li>
-    <li>Sélectionner les deux colonnes de données.</li>
-    <li>Cliquer sur <strong>Insertion → Graphique</strong>.</li>
-    <li>Choisir le type de graphique <strong>Nuage de points</strong>.</li>
-    <li>Dans « Personnaliser », ouvrir « Série » et activer la courbe de tendance linéaire.</li>
-    <li>Dans les options de libellé, choisir « Utiliser l'équation » pour afficher l'équation de la droite.</li>
-    <li>Ajouter un titre et des titres aux axes.</li>
-  </ol>
+            <p>
+                Ouvre le document Google Docs pour consulter les trois
+                graphiques de l'exercice 2.5.
+            </p>
 
-  <div class="note">
-    <strong>Pour intégrer les graphiques dans le portfolio :</strong>
-    <a href="https://youtu.be/PpFxZMAhIk4"
-       target="_blank" rel="noopener">
-      regarder la vidéo de rappel sur l'intégration des graphiques.
-    </a>
-  </div>
-</section>
+            <a class="button"
+               href="YOUR_GOOGLE_DOC_LINK_HERE"
+               target="_blank"
+               rel="noopener">
+                Ouvrir mon Google Doc
+            </a>
+        </div>
 
-<!-- SECTION 3 : GRAPHIQUE 1 -->
-
-<section id="graphique1">
-  <p class="tag">03 · Exercice 2.5</p>
-
-  <h2>Graphique 1 — La quantité d'essence sans plomb vendue selon le prix</h2>
-
-  <p>
-    <strong>Variable indépendante (x) :</strong> prix de l'essence en cents/litre.
-    <br>
-    <strong>Variable dépendante (y) :</strong> quantité vendue en L/h.
-  </p>
-
-  <svg class="chart" viewBox="0 0 760 430"
-       role="img"
-       aria-label="Nuage de points du prix de l'essence et de la quantité vendue avec droite de régression">
-
-    <defs>
-      <style>
-        .grid { stroke: #eadce9; stroke-width: 1; }
-        .tick { fill: #755b73; font: 13px Arial, sans-serif; }
-        .axis { stroke: #7f647d; stroke-width: 1.7; }
-        .point { fill: #ec75b5; stroke: white; stroke-width: 2; }
-        .trend { stroke: #8a5cc4; stroke-width: 3.5; }
-        .axislabel { fill: #63475f; font: 15px Arial, sans-serif; font-weight: bold; }
-      </style>
-    </defs>
-
-    <!-- Grille verticale -->
-    <line x1="120" y1="35" x2="120" y2="350" class="grid"/>
-    <line x1="230" y1="35" x2="230" y2="350" class="grid"/>
-    <line x1="340" y1="35" x2="340" y2="350" class="grid"/>
-    <line x1="450" y1="35" x2="450" y2="350" class="grid"/>
-    <line x1="560" y1="35" x2="560" y2="350" class="grid"/>
-    <line x1="670" y1="35" x2="670" y2="350" class="grid"/>
-
-    <!-- Grille horizontale -->
-    <line x1="90" y1="35" x2="700" y2="35" class="grid"/>
-    <line x1="90" y1="87" x2="700" y2="87" class="grid"/>
-    <line x1="90" y1="140" x2="700" y2="140" class="grid"/>
-    <line x1="90" y1="192" x2="700" y2="192" class="grid"/>
-    <line x1="90" y1="245" x2="700" y2="245" class="grid"/>
-    <line x1="90" y1="297" x2="700" y2="297" class="grid"/>
-    <line x1="90" y1="350" x2="700" y2="350" class="grid"/>
-
-    <!-- Axes -->
-    <line x1="90" y1="35" x2="90" y2="350" class="axis"/>
-    <line x1="90" y1="350" x2="700" y2="350" class="axis"/>
-
-    <!-- Étiquettes x -->
-    <text x="120" y="373" text-anchor="middle" class="tick">54</text>
-    <text x="230" y="373" text-anchor="middle" class="tick">56</text>
-    <text x="340" y="373" text-anchor="middle" class="tick">58</text>
-    <text x="450" y="373" text-anchor="middle" class="tick">60</text>
-    <text x="560" y="373" text-anchor="middle" class="tick">62</text>
-
-    <!-- Étiquettes y -->
-    <text x="78" y="355" text-anchor="end" class="tick">70</text>
-    <text x="78" y="302" text-anchor="end" class="tick">90</text>
-    <text x="78" y="250" text-anchor="end" class="tick">110</text>
-    <text x="78" y="197" text-anchor="end" class="tick">130</text>
-    <text x="78" y="145" text-anchor="end" class="tick">150</text>
-    <text x="78" y="92" text-anchor="end" class="tick">170</text>
-    <text x="78" y="40" text-anchor="end" class="tick">190</text>
-
-    <!-- Droite de régression approximative y = -13.157x + 904.514 -->
-    <line x1="120" y1="78" x2="670" y2="319" class="trend"/>
-
-    <!-- Points de données -->
-    <circle cx="147" cy="45" r="6" class="point"><title>(54.5, 186)</title></circle>
-    <circle cx="175" cy="66" r="6" class="point"><title>(55, 178)</title></circle>
-    <circle cx="224" cy="82" r="6" class="point"><title>(55.9, 172)</title></circle>
-    <circle cx="246" cy="140" r="6" class="point"><title>(56.3, 150)</title></circle>
-    <circle cx="361" cy="70" r="6" class="point"><title>(58.4, 177)</title></circle>
-    <circle cx="405" cy="240" r="6" class="point"><title>(59.2, 112)</title></circle>
-    <circle cx="460" cy="266" r="6" class="point"><title>(60.2, 102)</title></circle>
-    <circle cx="575" cy="316" r="6" class="point"><title>(62.3, 83)</title></circle>
-
-    <text x="395" y="415" text-anchor="middle" class="axislabel">
-      Prix (cents/litre)
-    </text>
-
-    <text transform="translate(23 192) rotate(-90)"
-          text-anchor="middle" class="axislabel">
-      Quantité vendue (L/h)
-    </text>
-  </svg>
-
-  <div class="results">
-    <div class="result-card">
-      <small>Équation de la droite</small>
-      <strong>y ≈ −13,157x + 904,514</strong>
-    </div>
-
-    <div class="result-card">
-      <small>Coefficient de corrélation</small>
-      <strong>r ≈ −0,899</strong>
-    </div>
-
-    <div class="result-card">
-      <small>Direction et force</small>
-      <strong>Forte et négative</strong>
-    </div>
-  </div>
-
-  <h3>Interprétation</h3>
-
-  <p>
-    On observe une forte corrélation négative entre le prix de l'essence
-    et la quantité vendue. En général, lorsque le prix de l'essence augmente,
-    la quantité vendue diminue. Le coefficient de corrélation
-    r ≈ −0,899 confirme cette relation linéaire négative forte.
-  </p>
-
-  <h3>Données utilisées</h3>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Prix (cents/litre)</th>
-        <th>Quantité vendue (L/h)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>54,5</td><td>186</td></tr>
-      <tr><td>55,0</td><td>178</td></tr>
-      <tr><td>55,9</td><td>172</td></tr>
-      <tr><td>56,3</td><td>150</td></tr>
-      <tr><td>58,4</td><td>177</td></tr>
-      <tr><td>59,2</td><td>112</td></tr>
-      <tr><td>60,2</td><td>102</td></tr>
-      <tr><td>62,3</td><td>83</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- SECTION 4 : GRAPHIQUE 2 -->
-
-<section id="graphique2">
-  <p class="tag">04 · Exercice 2.5</p>
-
-  <h2>Graphique 2 — À compléter</h2>
-
-  <div class="placeholder">
-    <h3>♡ Graphique 2 ♡</h3>
-
-    <p>
-      Ajoute ici le deuxième ensemble de données de l'exercice 2.5.
-      Le graphique doit inclure un nuage de points, une droite de régression,
-      son équation et le coefficient de corrélation r.
-    </p>
-
-    <p><strong>Équation :</strong> à calculer</p>
-    <p><strong>Coefficient r :</strong> à calculer</p>
-    <p><strong>Force et direction :</strong> à interpréter</p>
-  </div>
-</section>
-
-<!-- SECTION 5 : GRAPHIQUE 3 -->
-
-<section id="graphique3">
-  <p class="tag">05 · Exercice 2.5</p>
-
-  <h2>Graphique 3 — À compléter</h2>
-
-  <div class="placeholder">
-    <h3>♡ Graphique 3 ♡</h3>
-
-    <p>
-      Ajoute ici le troisième ensemble de données de l'exercice 2.5.
-      Le graphique doit inclure un nuage de points, une droite de régression,
-      son équation et le coefficient de corrélation r.
-    </p>
-
-    <p><strong>Équation :</strong> à calculer</p>
-    <p><strong>Coefficient r :</strong> à calculer</p>
-    <p><strong>Force et direction :</strong> à interpréter</p>
-  </div>
-</section>
-
-<!-- SECTION 6 : CORRELATION -->
-
-<section id="correlation">
-  <p class="tag">06 · Analyse</p>
-
-  <h2>Comment interpréter le coefficient de corrélation r</h2>
-
-  <p>
-    Le coefficient de corrélation linéaire r varie entre −1 et +1.
-    Son signe indique la direction de la relation et sa valeur absolue
-    aide à déterminer sa force.
-  </p>
-
-  <div class="results">
-    <div class="result-card">
-      <small>r proche de +1</small>
-      <strong>Corrélation positive forte</strong>
-      <p>Les deux variables ont tendance à augmenter ensemble.</p>
-    </div>
-
-    <div class="result-card">
-      <small>r proche de 0</small>
-      <strong>Corrélation linéaire faible</strong>
-      <p>Il y a peu ou pas de relation linéaire évidente.</p>
-    </div>
-
-    <div class="result-card">
-      <small>r proche de −1</small>
-      <strong>Corrélation négative forte</strong>
-      <p>Quand une variable augmente, l'autre tend à diminuer.</p>
-    </div>
-  </div>
-
-  <div class="note">
-    <strong>Attention :</strong> les catégories « faible », « modérée »
-    et « forte » sont approximatives. Il faut aussi examiner la forme
-    du nuage de points et tenir compte du contexte.
-  </div>
-</section>
+        <p>
+            <em>
+                Assure-toi que le document Google Docs est accessible aux
+                personnes qui doivent le consulter.
+            </em>
+        </p>
+    </section>
 
 </main>
 
 <footer>
-  Portfolio numérique · Module 2-5 ♡
+    <p>🌷 Portfolio numérique • Module 2.5 🌷</p>
 </footer>
 
 </body>
 </html>
+```
