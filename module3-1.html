@@ -4,124 +4,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Module 3.1 | Simulations expérimentales</title>
+<title>Module 3.1 — Simulations expérimentales</title>
 
 <style>
-* {
-    box-sizing: border-box;
+:root {
+  --pink: #d94f87;
+  --light: #fff0f6;
+  --pale: #fff8fb;
+  --dark: #8f2450;
+  --text: #3f2933;
+  --border: #f4bfd2;
 }
 
+* { box-sizing: border-box; }
+
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #fff5f8;
-    color: #49313b;
-    line-height: 1.7;
+  margin: 0;
+  background: linear-gradient(135deg,#fff8fb,#ffe7f0);
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
 }
 
 header {
-    background: linear-gradient(135deg, #f8a5c2, #d94f87);
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
+  background: linear-gradient(135deg,#f6a5c2,#cf3978);
+  color: white;
+  text-align: center;
+  padding: 42px 18px;
 }
 
 header h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+  font-size: clamp(2rem,5vw,3rem);
+  margin: 8px 0;
 }
 
-header p {
-    font-size: 18px;
+main {
+  max-width: 1000px;
+  margin: 26px auto;
+  padding: 0 16px 40px;
 }
 
-.container {
-    max-width: 950px;
-    margin: 35px auto;
-    padding: 0 20px;
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  margin: 20px 0;
+  box-shadow: 0 7px 22px #8f245012;
 }
 
-.intro, .simulation, .conclusion {
-    background: white;
-    padding: 28px;
-    margin-bottom: 25px;
-    border-radius: 18px;
-    box-shadow: 0 5px 18px rgba(217, 79, 135, 0.10);
-    border: 1px solid #f7d2e0;
-}
-
-h2 {
-    color: #c23d76;
-    margin-top: 0;
-}
+h2 { color: var(--dark); margin-top: 0; }
 
 .badge {
-    display: inline-block;
-    background: #ffe0ec;
-    color: #a52d60;
-    padding: 5px 13px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  display: inline-block;
+  background: #ffe0ec;
+  color: var(--dark);
+  border-radius: 30px;
+  padding: 4px 12px;
+  font-size: .8rem;
+  font-weight: bold;
 }
 
 .situation {
-    background: #fff4f8;
-    border-left: 5px solid #e875a4;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
+  background: var(--pale);
+  border-left: 4px solid var(--pink);
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin: 14px 0;
 }
 
-.formula {
-    background: #fff0f5;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    color: #a52d60;
-    font-weight: bold;
-    margin: 20px 0;
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 14px 0;
 }
 
-.button {
-    display: inline-block;
-    background: #d94f87;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-top: 10px;
-    transition: 0.2s;
+button {
+  background: var(--pink);
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.button:hover {
-    background: #ad2d64;
+button:hover { background: var(--dark); }
+
+input[type=number] {
+  width: 110px;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
-footer {
-    text-align: center;
-    background: #c23d76;
-    color: white;
-    padding: 22px;
-    margin-top: 40px;
+.result {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 14px 0;
+}
+
+.big {
+  font-size: 1.5rem;
+  color: var(--dark);
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 12px;
+  font-size: .95rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 9px;
+  text-align: center;
+}
+
+th {
+  background: #ffe0ec;
+  color: var(--dark);
+}
+
+.tablewrap {
+  overflow-x: auto;
+  max-height: 320px;
 }
 
 .small {
-    font-size: 14px;
-    color: #795b68;
+  font-size: .88rem;
+  color: #765b66;
 }
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 32px;
-    }
+footer {
+  text-align: center;
+  background: var(--dark);
+  color: white;
+  padding: 22px;
+}
 
-    .intro, .simulation, .conclusion {
-        padding: 20px;
-    }
+details { margin-top: 12px; }
+summary { cursor: pointer; color: var(--dark); font-weight: bold; }
+
+@media(max-width:600px) {
+  .panel { padding: 16px; }
+  table { font-size: .82rem; }
+  th,td { padding: 6px; }
 }
 </style>
 </head>
@@ -129,196 +162,335 @@ footer {
 <body>
 
 <header>
-    <h1>🌸 Module 3.1</h1>
-    <p>Simulations expérimentales</p>
-    <p>Portfolio numérique de mathématiques</p>
+  <div>PORTFOLIO NUMÉRIQUE · MATHÉMATIQUES</div>
+  <h1>🌸 Module 3.1</h1>
+  <p>Simulations expérimentales</p>
+  <p>Quatre expériences interactives directement sur cette page</p>
 </header>
 
-<main class="container">
+<main>
 
-    <section class="intro">
-        <span class="badge">OBJECTIF D'APPRENTISSAGE</span>
-        <h2>Comprendre les probabilités expérimentales</h2>
+<section class="panel">
+  <h2>Objectif d’apprentissage</h2>
 
-        <p>
-            Les simulations expérimentales permettent d'estimer la probabilité
-            qu'un événement se produise en répétant une expérience plusieurs fois.
-            À l'aide de Google Sheets, des nombres aléatoires permettent de
-            reproduire différentes situations et d'observer leurs résultats.
-        </p>
+  <p>
+    Une probabilité expérimentale est estimée en divisant
+    le nombre d’essais où l’événement se produit par
+    le nombre total d’essais.
+  </p>
 
-        <div class="formula">
-            Probabilité expérimentale =
-            Nombre de résultats favorables ÷ Nombre total d'essais
-        </div>
+  <div class="result">
+    <strong>Formule :</strong>
+    probabilité expérimentale =
+    résultats favorables ÷ nombre total d’essais.
+  </div>
 
-        <p>
-            Pour chaque simulation, un grand nombre d'essais permet d'obtenir
-            une estimation plus stable de la probabilité recherchée.
-        </p>
-    </section>
+  <p>
+    Choisis le nombre d’essais et clique sur
+    « Lancer la simulation ». Les résultats sont
+    calculés directement sur cette page.
+  </p>
+</section>
 
-    <!-- SIMULATION 1 -->
+<!-- SIMULATION 1 -->
 
-    <section class="simulation">
-        <span class="badge">SIMULATION 1</span>
-        <h2>🏈 Manquer trois bottés de suite</h2>
+<section class="panel" id="sim1">
+  <span class="badge">SIMULATION 1</span>
+  <h2>🏈 Manquer 3 bottés de suite</h2>
 
-        <div class="situation">
-            <strong>Mise en situation :</strong><br>
-            Un botteur de placement dans une équipe de football réussit
-            80 % de ses bottés. Détermine la probabilité expérimentale
-            qu'il manque trois bottés de suite.
-        </div>
+  <div class="situation">
+    <strong>Mise en situation :</strong>
+    Un botteur de placement dans une équipe de football
+    réussit 80 % de ses bottés. Détermine la probabilité
+    expérimentale qu’il manque trois bottés de suite.
+  </div>
 
-        <h3>Comment fonctionne la simulation?</h3>
+  <p>
+    Chaque botté a 20 % de chances d’être manqué.
+    Un essai contient trois bottés consécutifs;
+    il est favorable si les trois sont manqués.
+  </p>
 
-        <p>
-            Le botteur réussit 80 % de ses bottés et en manque donc 20 %.
-            Chaque essai représente trois bottés consécutifs. Un résultat
-            est favorable lorsque les trois bottés sont manqués.
-        </p>
+  <div class="controls">
+    <label for="n1">Nombre d’essais :</label>
+    <input id="n1" type="number" min="100" max="10000"
+           step="100" value="1000">
+    <button onclick="runSimulation(1)">
+      Lancer la simulation
+    </button>
+  </div>
 
-        <p><strong>Événement recherché :</strong> manquer les trois bottés.</p>
+  <div class="result" id="r1" aria-live="polite">
+    Clique sur le bouton pour lancer la simulation.
+  </div>
 
-        <a class="button"
-           href="LIEN_SIMULATION_1"
-           target="_blank"
-           rel="noopener">
-           📊 Ouvrir la simulation 1
-        </a>
-    </section>
+  <details>
+    <summary>Voir les premiers résultats</summary>
+    <div class="tablewrap">
+      <table id="t1"></table>
+    </div>
+  </details>
+</section>
 
-    <!-- SIMULATION 2 -->
+<!-- SIMULATION 2 -->
 
-    <section class="simulation">
-        <span class="badge">SIMULATION 2</span>
-        <h2>⌨️ Un clavier défectueux</h2>
+<section class="panel" id="sim2">
+  <span class="badge">SIMULATION 2</span>
+  <h2>⌨️ Un clavier défectueux</h2>
 
-        <div class="situation">
-            <strong>Mise en situation :</strong><br>
-            Une entreprise d'ordinateurs fabrique des claviers, dont
-            10 % sont défectueux. Détermine la probabilité expérimentale
-            qu'un clavier ou plus parmi les trois prochains à sortir de
-            la chaîne de montage soient défectueux.
-        </div>
+  <div class="situation">
+    <strong>Mise en situation :</strong>
+    Une entreprise d’ordinateurs fabrique des claviers,
+    dont 10 % sont défectueux. Détermine la probabilité
+    expérimentale qu’un clavier ou plus parmi les trois
+    prochains à sortir de la chaîne de montage soient défectueux.
+  </div>
 
-        <h3>Comment fonctionne la simulation?</h3>
+  <p>
+    Chaque clavier a 10 % de chances d’être défectueux.
+    Un essai contient trois claviers; il est favorable
+    si au moins un est défectueux.
+  </p>
 
-        <p>
-            Chaque clavier a 10 % de chances d'être défectueux.
-            Chaque essai représente trois claviers. Le résultat est favorable
-            si au moins un des trois claviers est défectueux.
-        </p>
+  <div class="controls">
+    <label for="n2">Nombre d’essais :</label>
+    <input id="n2" type="number" min="100" max="10000"
+           step="100" value="1000">
+    <button onclick="runSimulation(2)">
+      Lancer la simulation
+    </button>
+  </div>
 
-        <p><strong>Événement recherché :</strong> au moins un clavier défectueux.</p>
+  <div class="result" id="r2" aria-live="polite">
+    Clique sur le bouton pour lancer la simulation.
+  </div>
 
-        <a class="button"
-           href="LIEN_SIMULATION_2"
-           target="_blank"
-           rel="noopener">
-           📊 Ouvrir la simulation 2
-        </a>
-    </section>
+  <details>
+    <summary>Voir les premiers résultats</summary>
+    <div class="tablewrap">
+      <table id="t2"></table>
+    </div>
+  </details>
+</section>
 
-    <!-- SIMULATION 3 -->
+<!-- SIMULATION 3 -->
 
-    <section class="simulation">
-        <span class="badge">SIMULATION 3</span>
-        <h2>📝 Au moins 7/10 à un test vrai ou faux</h2>
+<section class="panel" id="sim3">
+  <span class="badge">SIMULATION 3</span>
+  <h2>📝 Au moins 7/10 à un test vrai ou faux</h2>
 
-        <div class="situation">
-            <strong>Mise en situation :</strong><br>
-            Détermine la probabilité expérimentale de deviner correctement
-            au moins 7 questions de type vrai ou faux sur 10.
-        </div>
+  <div class="situation">
+    <strong>Mise en situation :</strong>
+    Détermine la probabilité expérimentale de deviner
+    correctement au moins 7 questions de type vrai
+    ou faux sur 10.
+  </div>
 
-        <h3>Comment fonctionne la simulation?</h3>
+  <p>
+    Chaque question a deux réponses possibles, donc
+    une chance sur deux d’être correcte en devinant.
+    Un essai représente un test de dix questions;
+    il est favorable si au moins sept réponses sont correctes.
+  </p>
 
-        <p>
-            Chaque question comporte deux réponses possibles.
-            En devinant au hasard, la probabilité de répondre correctement
-            est de 50 %. Chaque essai représente un test de dix questions.
-        </p>
+  <div class="controls">
+    <label for="n3">Nombre d’essais :</label>
+    <input id="n3" type="number" min="100" max="10000"
+           step="100" value="1000">
+    <button onclick="runSimulation(3)">
+      Lancer la simulation
+    </button>
+  </div>
 
-        <p>
-            Le résultat est favorable si au moins sept réponses sur dix
-            sont correctes.
-        </p>
+  <div class="result" id="r3" aria-live="polite">
+    Clique sur le bouton pour lancer la simulation.
+  </div>
 
-        <p><strong>Événement recherché :</strong> obtenir au moins 7 bonnes réponses.</p>
+  <details>
+    <summary>Voir les premiers résultats</summary>
+    <div class="tablewrap">
+      <table id="t3"></table>
+    </div>
+  </details>
+</section>
 
-        <a class="button"
-           href="LIEN_SIMULATION_3"
-           target="_blank"
-           rel="noopener">
-           📊 Ouvrir la simulation 3
-        </a>
-    </section>
+<!-- SIMULATION 4 -->
 
-    <!-- SIMULATION 4 -->
+<section class="panel" id="sim4">
+  <span class="badge">SIMULATION 4</span>
+  <h2>📚 Au moins 3/6 à un test à choix multiples</h2>
 
-    <section class="simulation">
-        <span class="badge">SIMULATION 4</span>
-        <h2>📚 Au moins 3/6 à un test à choix multiples</h2>
+  <div class="situation">
+    <strong>Mise en situation :</strong>
+    Détermine la probabilité expérimentale de deviner
+    au moins 3 questions sur 6 lors d’un examen à choix
+    multiples où toutes les questions comportent cinq
+    choix de réponse.
+  </div>
 
-        <div class="situation">
-            <strong>Mise en situation :</strong><br>
-            Détermine la probabilité expérimentale de deviner au moins
-            3 questions sur 6 lors d'un examen à choix multiples où toutes
-            les questions comportent cinq choix de réponse.
-        </div>
+  <p>
+    Chaque question a cinq choix, donc une chance sur
+    cinq d’être correcte en devinant. Un essai représente
+    un test de six questions; il est favorable si au moins
+    trois réponses sont correctes.
+  </p>
 
-        <h3>Comment fonctionne la simulation?</h3>
+  <div class="controls">
+    <label for="n4">Nombre d’essais :</label>
+    <input id="n4" type="number" min="100" max="10000"
+           step="100" value="1000">
+    <button onclick="runSimulation(4)">
+      Lancer la simulation
+    </button>
+  </div>
 
-        <p>
-            Chaque question comporte cinq choix de réponse.
-            En devinant au hasard, la probabilité de répondre correctement
-            est de 20 %. Chaque essai représente un examen de six questions.
-        </p>
+  <div class="result" id="r4" aria-live="polite">
+    Clique sur le bouton pour lancer la simulation.
+  </div>
 
-        <p>
-            Le résultat est favorable si au moins trois réponses sur six
-            sont correctes.
-        </p>
+  <details>
+    <summary>Voir les premiers résultats</summary>
+    <div class="tablewrap">
+      <table id="t4"></table>
+    </div>
+  </details>
+</section>
 
-        <p><strong>Événement recherché :</strong> obtenir au moins 3 bonnes réponses.</p>
+<!-- CONCLUSION -->
 
-        <a class="button"
-           href="LIEN_SIMULATION_4"
-           target="_blank"
-           rel="noopener">
-           📊 Ouvrir la simulation 4
-        </a>
-    </section>
+<section class="panel">
+  <h2>Conclusion</h2>
 
-    <!-- CONCLUSION -->
+  <p>
+    Les simulations permettent d’estimer des probabilités
+    en répétant virtuellement une expérience. Les résultats
+    peuvent varier d’un lancement à l’autre. En général,
+    augmenter le nombre d’essais rend l’estimation plus
+    stable et la rapproche de la probabilité théorique.
+  </p>
 
-    <section class="conclusion">
-        <span class="badge">RÉFLEXION</span>
-        <h2>Conclusion</h2>
-
-        <p>
-            Ces quatre simulations montrent comment les probabilités
-            expérimentales permettent d'estimer les chances qu'un événement
-            se produise. En répétant chaque expérience un grand nombre de fois,
-            on peut comparer les résultats observés aux probabilités théoriques.
-        </p>
-
-        <p>
-            Cette activité démontre que les mathématiques permettent de
-            modéliser des situations réelles et de mieux comprendre le rôle
-            du hasard dans nos décisions et nos observations.
-        </p>
-    </section>
+  <p class="small">
+    Note : les résultats sont générés dans ton navigateur
+    et ne sont pas envoyés ni enregistrés sur un serveur.
+  </p>
+</section>
 
 </main>
 
 <footer>
-    <p>🌷 Module 3.1 — Simulations expérimentales</p>
-    <p>Portfolio numérique de mathématiques</p>
+  🌷 Module 3.1 — Simulations expérimentales
 </footer>
+
+<script>
+
+function runSimulation(id) {
+
+  const input = document.getElementById('n' + id);
+
+  let n = Number(input.value);
+
+  if (!Number.isFinite(n)) n = 1000;
+
+  n = Math.max(100, Math.min(10000, Math.floor(n)));
+
+  input.value = n;
+
+  let favorable = 0;
+  let rows = [];
+
+  let trials = id === 1 || id === 2
+      ? 3
+      : id === 3 ? 10 : 6;
+
+  let p = id === 1 ? 0.2
+      : id === 2 ? 0.1
+      : id === 3 ? 0.5 : 0.2;
+
+  for (let i = 1; i <= n; i++) {
+
+    let successes = 0;
+
+    for (let j = 0; j < trials; j++) {
+      if (Math.random() < p) successes++;
+    }
+
+    let good =
+      id === 1 ? successes === 3 :
+      id === 2 ? successes >= 1 :
+      id === 3 ? successes >= 7 :
+      successes >= 3;
+
+    if (good) favorable++;
+
+    if (i <= 20) {
+      rows.push([
+        i,
+        successes,
+        good ? 'Oui' : 'Non'
+      ]);
+    }
+  }
+
+  const probability = favorable / n;
+
+  const theory =
+      id === 1 ? 0.008 :
+      id === 2 ? 0.271 :
+      id === 3 ? 0.171875 :
+      0.09888;
+
+  const label =
+      id === 1 ? '3 bottés manqués' :
+      id === 2 ? 'claviers défectueux parmi 3' :
+      id === 3 ? 'bonnes réponses sur 10' :
+      'bonnes réponses sur 6';
+
+  document.getElementById('r' + id).innerHTML =
+
+    '<div>Nombre total d’essais : <strong>' +
+    n.toLocaleString('fr-CA') +
+    '</strong></div>' +
+
+    '<div>Résultats favorables : <strong>' +
+    favorable.toLocaleString('fr-CA') +
+    '</strong></div>' +
+
+    '<div class="big">Probabilité expérimentale : ' +
+    (probability * 100).toLocaleString('fr-CA',{
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }) + ' %</div>' +
+
+    '<div>Probabilité théorique de comparaison : ' +
+    (theory * 100).toLocaleString('fr-CA',{
+      minimumFractionDigits:3,
+      maximumFractionDigits:3
+    }) + ' %</div>' +
+
+    '<div class="small">L’événement favorable est : ' +
+    label + '.</div>';
+
+  let table =
+    '<thead><tr>' +
+    '<th>Essai</th>' +
+    '<th>Nombre de résultats individuels favorables</th>' +
+    '<th>Événement recherché?</th>' +
+    '</tr></thead><tbody>';
+
+  rows.forEach(r => {
+    table += '<tr>' +
+      '<td>' + r[0] + '</td>' +
+      '<td>' + r[1] + '</td>' +
+      '<td>' + r[2] + '</td>' +
+      '</tr>';
+  });
+
+  table += '</tbody>';
+
+  document.getElementById('t' + id).innerHTML = table;
+}
+
+</script>
 
 </body>
 </html>
-```
